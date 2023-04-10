@@ -11,13 +11,13 @@ function Landing() {
 
   const CustomPrevArrow = (props) => (
     <button
-      className="z-[3] fa fa-arrow-left text-black hover:text-slate-300 transform hover:scale-[5.5] transition-all ml-12 scale-[4.0]"
+      className="z-[3] fa fa-arrow-left text-white hover:text-slate-300 transform hover:scale-[5.5] transition-all ml-12 scale-[4.0]"
       onClick={() => refslide.current.slickPrev()}
     ></button>
   );
   const CustomNextArrow = (props) => (
     <button
-      className="z-[3] fa fa-arrow-right text-black hover:text-slate-300 transform hover:scale-[5.5] transition-all mr-12 scale-[4.0]"
+      className="z-[3] fa fa-arrow-right text-white hover:text-slate-300 transform hover:scale-[5.5] transition-all mr-12 scale-[4.0]"
       onClick={() => refslide.current.slickNext()}
     ></button>
   );
@@ -85,8 +85,8 @@ function Landing() {
 
   return (
     <div className="w-screen h-screen flex justify-center items-center z-10">
-      <div className="h-3/4 w-full mt-10" id="swrapper">
-        <div className="w-full h-full flex justify-between items-center absolute">
+      <div className="h-5/6 w-full mt-10" id="swrapper">
+        <div className="w-full h-full flex justify-between items-center absolute bg-red-500">
           <CustomPrevArrow />
           <CustomNextArrow />
         </div>
