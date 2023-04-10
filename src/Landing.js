@@ -4,13 +4,11 @@ import myVideo from "./content/videos/Arcade_Odyssey.mp4";
 import secondBanner from "./content/images/second-banner-fixed.png";
 import $ from "jquery";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 function Landing() {
   const [displaySlides, setDisplaySlides] = useState(null);
   let slides = null;
-  let elementHeight = null;
+
+  const elementHeight = $("#swrapper").height();
 
   const CustomPrevArrow = (props) => (
     <button
@@ -36,8 +34,7 @@ function Landing() {
   };
 
   useEffect(() => {
-    const elementHeight = $("#swrapper").height();
-
+    console.log(elementHeight);
     slides = [
       {
         classes: "bg-white",
@@ -45,7 +42,8 @@ function Landing() {
         content: (
           <video
             src={myVideo}
-            className={`h-[${elementHeight}px] w-full object-fill`}
+            className={`w-full object-fill`}
+            style={{ height: `${elementHeight}px` }}
             autoPlay
             loop
             muted
@@ -59,7 +57,8 @@ function Landing() {
         content: (
           <img
             src={secondBanner}
-            className={`h-[${elementHeight}px] w-full object-fill`}
+            className={`w-full object-fill`}
+            style={{ height: `${elementHeight}px` }}
             onClick={() => {}}
           />
         ),
