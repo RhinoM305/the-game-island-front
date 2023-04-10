@@ -83,7 +83,7 @@ function Landing() {
 
   return (
     <div className="w-screen h-screen flex justify-center items-center z-10">
-      <div className="h-3/4 w-full relative mt-10" id="swrapper">
+      <div className="h-3/4 w-full mt-10" id="swrapper">
         <div className="w-full h-full flex justify-between items-center absolute">
           <CustomPrevArrow />
           <CustomNextArrow />
