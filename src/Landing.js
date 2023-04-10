@@ -6,9 +6,8 @@ import $ from "jquery";
 
 function Landing() {
   const [displaySlides, setDisplaySlides] = useState(null);
+  let height = null;
   let slides = null;
-
-  const elementHeight = $("#swrapper").height();
 
   const CustomPrevArrow = (props) => (
     <button
@@ -34,7 +33,11 @@ function Landing() {
   };
 
   useEffect(() => {
-    console.log(elementHeight);
+    const elementHeight = $("#swrapper").height();
+    const height = elementHeight;
+
+    console.log("elemheight", elementHeight);
+    console.log("height", height);
     slides = [
       {
         classes: "bg-white",
@@ -43,7 +46,7 @@ function Landing() {
           <video
             src={myVideo}
             className={`w-full object-fill`}
-            style={{ height: `${elementHeight}px` }}
+            style={{ height: `${height}px` }}
             autoPlay
             loop
             muted
@@ -58,7 +61,7 @@ function Landing() {
           <img
             src={secondBanner}
             className={`w-full object-fill`}
-            style={{ height: `${elementHeight}px` }}
+            style={{ height: `${height}px` }}
             onClick={() => {}}
           />
         ),
@@ -75,7 +78,7 @@ function Landing() {
         slides={slides}
         setting={setting}
         refslide={refslide}
-        elementHeight={elementHeight}
+        elementHeight={height}
       />
     );
   }
