@@ -23,21 +23,10 @@ function Landing() {
   );
 
   const refslide = React.useRef();
-  let setting = {
-    dots: true,
-    arrows: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
 
   useEffect(() => {
     const elementHeight = $("#swrapper").height();
     const height = elementHeight;
-
-    console.log("elemheight", elementHeight);
-    console.log("height", height);
     slides = [
       {
         classes: "bg-white",
@@ -66,12 +55,33 @@ function Landing() {
           />
         ),
       },
-      { classes: "bg-white", name: "3" },
-      { classes: "bg-black", name: "4" },
     ];
+
     loadSlides();
   }, []);
 
+  let setting = {
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 8000,
+    appendDots: (dots) => (
+      <ul
+        style={{
+          height: "auto",
+        }}
+      >
+        {dots}
+      </ul>
+    ),
+    customPaging: (i) => (
+      <div className="mt-4 w-4 h-4 rounded-full bg-white active"></div>
+    ),
+  };
   function loadSlides() {
     setDisplaySlides(
       <SlideShow
@@ -84,9 +94,9 @@ function Landing() {
   }
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center z-10">
-      <div className="h-5/6 w-full mt-10" id="swrapper">
-        <div className="w-full h-full flex justify-between items-center absolute bg-red-500">
+    <div className="w-screen h-screen flex flex-col justify-center items-center z-10">
+      <div className="h-5/6 w-full mt-24" id="swrapper">
+        <div className="w-full h-full flex justify-between items-center absolute">
           <CustomPrevArrow />
           <CustomNextArrow />
         </div>

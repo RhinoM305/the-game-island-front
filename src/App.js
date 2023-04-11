@@ -1,6 +1,7 @@
 import "./index.css";
 import NavBar from "./nav/NavBar";
 import Landing from "./Landing";
+import BrandDisplay from "./BrandDisplay";
 
 function App() {
   return (
@@ -81,7 +82,7 @@ function App() {
 
       <NavBar />
       <Landing />
-      <div className="h-screen w-screen"></div>
+      <BrandDisplay />
     </>
   );
 }

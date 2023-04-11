@@ -2,9 +2,9 @@ import thegameisland from "../content/images/thegameisland.png";
 
 function NavBar() {
   return (
-    <div className="z-50 h-[120px] w-full backdrop-filter bg-opacity-40 backdrop-blur-lg bg-black fixed top-0 left-0">
+    <div className="z-50 h-[155px] w-full backdrop-filter bg-opacity-40 backdrop-blur-lg bg-black fixed top-0 left-0">
       <div className="flex w-full h-full justify-between items-center">
-        <img src={thegameisland} className="ml-4 mt-8 h-[155px]" />
+        <img src={thegameisland} className="ml-4 mt-2 h-full" />
         <div className="mr-4 text-white text-3xl font-Titan-One flex">
           <div className="flex">
             <input
