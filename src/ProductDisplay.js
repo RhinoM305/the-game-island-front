@@ -18,22 +18,6 @@ function ProductDisplay() {
         <div className="p-2 ml-8 text-6xl text-white bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg text-bold">
           Nintendo
         </div>
-        <div className="flex mr-8">
-          <div className="flex items-center justify-center mr-4 p-2 backdrop-filter bg-opacity-70 backdrop-blue-lg rounded-lg bg-black text-5xl text-bold text-white hover:bg-white hover:text-black transition transform hover:scale-[1.1]">
-            <img
-              src={require("./content/images/box.png")}
-              className="w-auto h-auto mr-2"
-            />
-            New Stock
-          </div>
-          <div className="flex items-center justify-center  p-2 backdrop-filter bg-opacity-70 backdrop-blue-lg rounded-lg bg-black text-5xl text-bold text-white hover:bg-white hover:text-black transition transform hover:scale-[1.1]">
-            <img
-              src={require("./content/images/fire.png")}
-              className="w-auto h-auto mr-2"
-            />
-            Popular
-          </div>
-        </div>
       </div>
       <div className="w-auto h-auto mx-8 mt-6 text-4xl text-white bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg">
         <ul className="flex flex-wrap justify-evenly">

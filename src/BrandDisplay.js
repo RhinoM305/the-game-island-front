@@ -3,7 +3,7 @@ import ProductDisplay from "./ProductDisplay";
 function BrandDisplay() {
   return (
     <>
-      <div className="mt-16 w-full h-[20rem]">
+      <div className="mt-16 w-full h-auto bg-black backdrop-filter bg-opacity-70 pt-6">
         <div className="flex items-center justify-between">
           <div className="w-4/5 h-full mx-2 flex justify-center items-center p-2 transition transform hover:scale-[1.1] bg-[#e4000f]">
             <img src={require("./content/images/nintendo.png")} />
@@ -47,6 +47,25 @@ function BrandDisplay() {
               Import
             </div>
           </div>
+        </div>
+      </div>
+      <div className="flex mb-8 items-center mr-8 bg-black backdrop-filter bg-opacity-70 w-screen">
+        <p className="text-2xl text-white mx-4">
+          Be the first to know about our new stock! Also view whats hot!
+        </p>
+        <div className="flex my-2 h-[50px] items-center justify-center mr-4 p-2 backdrop-filter bg-opacity-70 backdrop-blue-lg rounded-lg bg-black text-3xl text-bold text-white hover:bg-white hover:text-black transition transform hover:scale-[1.1]">
+          <img
+            src={require("./content/images/box.png")}
+            className="w-auto h-[50px] mr-2"
+          />
+          New Stock
+        </div>
+        <div className="flex my-2 h-[50px] items-center justify-center  p-2 backdrop-filter bg-opacity-70 backdrop-blue-lg rounded-lg bg-black text-3xl text-bold text-white hover:bg-white hover:text-black transition transform hover:scale-[1.1]">
+          <img
+            src={require("./content/images/fire.png")}
+            className="w-auto h-auto mr-2"
+          />
+          Popular
         </div>
       </div>
       <ProductDisplay />
