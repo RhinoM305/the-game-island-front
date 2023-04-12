@@ -19,10 +19,18 @@ function ProductDisplay() {
           Nintendo
         </div>
         <div className="flex mr-8">
-          <div className="mr-4 p-2 backdrop-filter bg-opacity-70 backdrop-blue-lg rounded-lg bg-black text-5xl text-bold text-white hover:bg-white hover:text-black transition transform hover:scale-[1.1]">
+          <div className="flex items-center justify-center mr-4 p-2 backdrop-filter bg-opacity-70 backdrop-blue-lg rounded-lg bg-black text-5xl text-bold text-white hover:bg-white hover:text-black transition transform hover:scale-[1.1]">
+            <img
+              src={require("./content/images/box.png")}
+              className="w-auto h-auto mr-2"
+            />
             New Stock
           </div>
-          <div className=" p-2 backdrop-filter bg-opacity-70 backdrop-blue-lg rounded-lg bg-black text-5xl text-bold text-white hover:bg-white hover:text-black transition transform hover:scale-[1.1]">
+          <div className="flex items-center justify-center  p-2 backdrop-filter bg-opacity-70 backdrop-blue-lg rounded-lg bg-black text-5xl text-bold text-white hover:bg-white hover:text-black transition transform hover:scale-[1.1]">
+            <img
+              src={require("./content/images/fire.png")}
+              className="w-auto h-auto mr-2"
+            />
             Popular
           </div>
         </div>
@@ -65,7 +73,7 @@ function ProductDisplay() {
         </ul>
       </div>
       <div className="flex h-full mx-8 mt-2 mt-6 bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg">
-        <div className="w-[250px] flex flex-col text-3xl overflow-hidden justify-center items-center">
+        {/* <div className="w-[250px] flex flex-col text-3xl overflow-hidden justify-center items-center">
           <button
             className="relative flex justify-center items-center text-center h-full p-8 w-full bg-[#00FFFF]"
             id="games"
@@ -96,23 +104,27 @@ function ProductDisplay() {
               Systems
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="flex flex-col w-full h-full">
-          <div className="flex items-center border-2 border-white rounded-lg h-14 justify-apart">
-            <div className="ml-12 text-4xl text-white text-bold">
-              Nintendo ( 1898 )
+          <div className="flex items-center border-2 border-white rounded-lg h-14 justify-between">
+            <div className="ml-12 text-4xl text-white text-bold">Nintendo</div>
+            <div className="text-4xl mr-6 text-bold text-white">
+              <button className="mx-3 w-auto px-8 hover:bg-white hover:text-black">
+                Games (330)
+              </button>
+              <button className="mx-3 w-auto px-8 hover:bg-white hover:text-black">
+                Assesories (291)
+              </button>
+              <button className="mx-3 w-auto px-8 hover:bg-white hover:text-black">
+                Systems (22)
+              </button>
             </div>
           </div>
-          <ul className="h-full my-2 overflow-scroll">
+          <ul className="flex flex-wrap justify-center h-full my-2 overflow-y-scroll">
             <li
-              className="h-1/5  w-[99%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+              className="h-[50%] w-[24%] mx-1 my-1 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
               id="item-1"
-              onClick={() => {
-                $("#item-1").toggleClass("h-1/5 h-1/2");
-                if (expandId === "item-1") {
-                  setExpandId(null);
-                } else setExpandId("item-1");
-              }}
+              onClick={() => {}}
             >
               {isExpand(
                 "item-1",
@@ -122,14 +134,9 @@ function ProductDisplay() {
               )}
             </li>
             <li
-              className="h-1/5  w-[99%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+              className="h-[50%] w-[24%] mx-1 my-1 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
               id="item-2"
-              onClick={() => {
-                $("#item-2").toggleClass("h-1/5 h-1/2");
-                if (expandId === "item-2") {
-                  setExpandId(null);
-                } else setExpandId("item-2");
-              }}
+              onClick={() => {}}
             >
               {isExpand(
                 "item-2",
@@ -139,14 +146,9 @@ function ProductDisplay() {
               )}
             </li>
             <li
-              className="h-1/5  w-[99%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+              className="h-[50%] w-[24%] mx-1 my-1 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
               id="item-3"
-              onClick={() => {
-                $("#item-3").toggleClass("h-1/5 h-1/2");
-                if (expandId === "item-3") {
-                  setExpandId(null);
-                } else setExpandId("item-3");
-              }}
+              onClick={() => {}}
             >
               {isExpand(
                 "item-3",
@@ -155,65 +157,18 @@ function ProductDisplay() {
                 "24.99"
               )}
             </li>
+
             <li
-              className="h-1/5  w-[99%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+              className="h-[50%] w-[24%] mx-1 my-1 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
               id="item-4"
-              onClick={() => {
-                $("#item-4").toggleClass("h-1/5 h-1/2");
-                if (expandId === "item-4") {
-                  setExpandId(null);
-                } else setExpandId("item-4");
-              }}
+              onClick={() => {}}
             >
-              {/* {isExpand("item-4")} */}
-            </li>
-            <li
-              className="h-1/5  w-[99%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
-              id="item-5"
-              onClick={() => {
-                $("#item-5").toggleClass("h-1/5 h-1/2");
-                if (expandId === "item-5") {
-                  setExpandId(null);
-                } else setExpandId("item-5");
-              }}
-            >
-              {/* {isExpand("item-5")} */}
-            </li>
-            <li
-              className="h-1/5  w-[99%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
-              id="item-6"
-              onClick={() => {
-                $("#item-6").toggleClass("h-1/5 h-1/2");
-                if (expandId === "item-6") {
-                  setExpandId(null);
-                } else setExpandId("item-6");
-              }}
-            >
-              {/* {isExpand("item-6")} */}
-            </li>
-            <li
-              className="h-1/5  w-[99%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
-              id="item-7"
-              onClick={() => {
-                $("#item-7").toggleClass("h-1/5 h-1/2");
-                if (expandId === "item-7") {
-                  setExpandId(null);
-                } else setExpandId("item-7");
-              }}
-            >
-              {/* {isExpand("item-7")} */}
-            </li>
-            <li
-              className="h-1/5  w-[99%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
-              id="item-8"
-              onClick={() => {
-                $("#item-8").toggleClass("h-1/5 h-1/2");
-                if (expandId === "item-8") {
-                  setExpandId(null);
-                } else setExpandId("item-8");
-              }}
-            >
-              {/* {isExpand("item-8")} */}
+              {isExpand(
+                "item-4",
+                "nes-rare.webp",
+                "Contra Original Nintendo NES Game (Complete, Rare)",
+                "299.99"
+              )}
             </li>
           </ul>
         </div>
@@ -223,3 +178,64 @@ function ProductDisplay() {
 }
 
 export default ProductDisplay;
+
+// <li
+//               className="h-1/5  w-[50%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+//               id="item-4"
+//               onClick={() => {
+//                 $("#item-4").toggleClass("h-1/5 h-1/2");
+//                 if (expandId === "item-4") {
+//                   setExpandId(null);
+//                 } else setExpandId("item-4");
+//               }}
+//             >
+//               {/* {isExpand("item-4")} */}
+//             </li>
+//             <li
+//               className="h-1/5  w-[50%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+//               id="item-5"
+//               onClick={() => {
+//                 $("#item-5").toggleClass("h-1/5 h-1/2");
+//                 if (expandId === "item-5") {
+//                   setExpandId(null);
+//                 } else setExpandId("item-5");
+//               }}
+//             >
+//               {/* {isExpand("item-5")} */}
+//             </li>
+//             <li
+//               className="h-1/5  w-[50%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+//               id="item-6"
+//               onClick={() => {
+//                 $("#item-6").toggleClass("h-1/5 h-1/2");
+//                 if (expandId === "item-6") {
+//                   setExpandId(null);
+//                 } else setExpandId("item-6");
+//               }}
+//             >
+//               {/* {isExpand("item-6")} */}
+//             </li>
+//             <li
+//               className="h-1/5  w-[50%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+//               id="item-7"
+//               onClick={() => {
+//                 $("#item-7").toggleClass("h-1/5 h-1/2");
+//                 if (expandId === "item-7") {
+//                   setExpandId(null);
+//                 } else setExpandId("item-7");
+//               }}
+//             >
+//               {/* {isExpand("item-7")} */}
+//             </li>
+//             <li
+//               className="h-1/5  w-[50%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+//               id="item-8"
+//               onClick={() => {
+//                 $("#item-8").toggleClass("h-1/5 h-1/2");
+//                 if (expandId === "item-8") {
+//                   setExpandId(null);
+//                 } else setExpandId("item-8");
+//               }}
+//             >
+//               {isExpand("item-8")}
+//             </li>
