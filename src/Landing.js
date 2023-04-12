@@ -79,7 +79,7 @@ function Landing() {
       </ul>
     ),
     customPaging: (i) => (
-      <div className="mt-4 w-4 h-4 rounded-full bg-white active"></div>
+      <div className="w-4 h-4 mt-4 bg-white rounded-full active"></div>
     ),
   };
   function loadSlides() {
@@ -94,9 +94,9 @@ function Landing() {
   }
 
   return (
-    <div className="w-screen h-screen flex flex-col justify-center items-center z-10">
-      <div className="h-5/6 w-full mt-24" id="swrapper">
-        <div className="w-full h-full flex justify-between items-center absolute">
+    <div className="z-10 flex flex-col items-center justify-center w-screen h-screen">
+      <div className="w-full mt-24 h-5/6" id="swrapper">
+        <div className="absolute flex items-center justify-between w-full h-full">
           <CustomPrevArrow />
           <CustomNextArrow />
         </div>
