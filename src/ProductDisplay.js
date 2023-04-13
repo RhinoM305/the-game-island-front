@@ -104,9 +104,9 @@ function ProductDisplay() {
               </button>
             </div>
           </div>
-          <ul className="flex flex-wrap justify-center h-full my-2 overflow-y-scroll">
+          <ul className="flex flex-wrap mx-2 h-full my-2 overflow-y-scroll">
             <li
-              className="h-[50%] w-[24%] mx-1 my-1 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
               id="item-1"
               onClick={() => {}}
             >
@@ -118,7 +118,7 @@ function ProductDisplay() {
               )}
             </li>
             <li
-              className="h-[50%] w-[24%] mx-1 my-1 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
               id="item-2"
               onClick={() => {}}
             >
@@ -130,7 +130,7 @@ function ProductDisplay() {
               )}
             </li>
             <li
-              className="h-[50%] w-[24%] mx-1 my-1 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
               id="item-3"
               onClick={() => {}}
             >
@@ -143,7 +143,7 @@ function ProductDisplay() {
             </li>
 
             <li
-              className="h-[50%] w-[24%] mx-1 my-1 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
               id="item-4"
               onClick={() => {}}
             >
@@ -152,6 +152,66 @@ function ProductDisplay() {
                 "nes-rare.webp",
                 "Contra Original Nintendo NES Game (Complete, Rare)",
                 "299.99"
+              )}
+            </li>
+            <li
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              id="item-5"
+              onClick={() => {}}
+            >
+              {isExpand(
+                "item-5",
+                "gameboy-advance.webp",
+                "Custom IPS V2 Nintendo GameBoy Advance System Handheld Console - Atomic Purple",
+                "499.99"
+              )}
+            </li>
+            <li
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              id="item-6"
+              onClick={() => {}}
+            >
+              {isExpand(
+                "item-6",
+                "gray-n64.webp",
+                " Funtastic Nintendo 64 Smoke Gray Atomic Black N64 Console Complete",
+                "199.99"
+              )}
+            </li>
+            <li
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              id="item-7"
+              onClick={() => {}}
+            >
+              {isExpand(
+                "item-7",
+                "n64-set.webp",
+                "Nintendo 64 N64 Original System Console +2 ORIGINAL CONTROLLERS w/ NEW JOYSTICKS",
+                "99.99"
+              )}
+            </li>
+            <li
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              id="item-8"
+              onClick={() => {}}
+            >
+              {isExpand(
+                "item-8",
+                "red-n64.webp",
+                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
+                "899.99"
+              )}
+            </li>
+            <li
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              id="item-8"
+              onClick={() => {}}
+            >
+              {isExpand(
+                "item-8",
+                "red-n64.webp",
+                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
+                "899.99"
               )}
             </li>
           </ul>
@@ -164,7 +224,7 @@ function ProductDisplay() {
 export default ProductDisplay;
 
 // <li
-//               className="h-1/5  w-[50%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+//               className="h-1/5  w-[50%] my-2 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
 //               id="item-4"
 //               onClick={() => {
 //                 $("#item-4").toggleClass("h-1/5 h-1/2");
@@ -176,7 +236,7 @@ export default ProductDisplay;
 //               {/* {isExpand("item-4")} */}
 //             </li>
 //             <li
-//               className="h-1/5  w-[50%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+//               className="h-1/5  w-[50%] my-2 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
 //               id="item-5"
 //               onClick={() => {
 //                 $("#item-5").toggleClass("h-1/5 h-1/2");
@@ -188,7 +248,7 @@ export default ProductDisplay;
 //               {/* {isExpand("item-5")} */}
 //             </li>
 //             <li
-//               className="h-1/5  w-[50%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+//               className="h-1/5  w-[50%] my-2 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
 //               id="item-6"
 //               onClick={() => {
 //                 $("#item-6").toggleClass("h-1/5 h-1/2");
@@ -200,7 +260,7 @@ export default ProductDisplay;
 //               {/* {isExpand("item-6")} */}
 //             </li>
 //             <li
-//               className="h-1/5  w-[50%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+//               className="h-1/5  w-[50%] my-2 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
 //               id="item-7"
 //               onClick={() => {
 //                 $("#item-7").toggleClass("h-1/5 h-1/2");
@@ -212,7 +272,7 @@ export default ProductDisplay;
 //               {/* {isExpand("item-7")} */}
 //             </li>
 //             <li
-//               className="h-1/5  w-[50%] my-1 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
+//               className="h-1/5  w-[50%] my-2 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
 //               id="item-8"
 //               onClick={() => {
 //                 $("#item-8").toggleClass("h-1/5 h-1/2");

@@ -49,11 +49,11 @@ function BrandDisplay() {
           </div>
         </div>
       </div>
-      <div className="flex mb-8 items-center mr-8 bg-black backdrop-filter bg-opacity-70 w-screen">
-        <p className="text-2xl text-white mx-4">
+      <div className="flex mb-12 items-center mr-8 bg-black backdrop-filter bg-opacity-70 w-screen">
+        <p className="text-2xl italic text-[yellow] mx-4">
           Be the first to know about our new stock! Also view whats hot!
         </p>
-        <div className="flex my-2 h-[50px] items-center justify-center mr-4 p-2 backdrop-filter bg-opacity-70 backdrop-blue-lg rounded-lg bg-black text-3xl text-bold text-white hover:bg-white hover:text-black transition transform hover:scale-[1.1]">
+        <div className="flex my-4 h-[50px] items-center justify-center mr-4 p-2 backdrop-filter bg-opacity-70 backdrop-blue-lg rounded-lg bg-black text-3xl text-bold text-white hover:bg-white hover:text-black transition transform hover:scale-[1.1]">
           <img
             src={require("./content/images/box.png")}
             className="w-auto h-[50px] mr-2"
