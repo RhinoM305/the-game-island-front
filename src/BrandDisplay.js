@@ -2,7 +2,7 @@ import ProductDisplay from "./ProductDisplay";
 
 function BrandDisplay() {
   return (
-    <>
+    <div className="w-full h-full">
       <div className="mt-16 w-full h-auto bg-black backdrop-filter bg-opacity-70 pt-6">
         <div className="flex items-center justify-between">
           <div className="w-4/5 h-full mx-2 flex justify-center items-center p-2 transition transform hover:scale-[1.1] bg-[#e4000f]">
@@ -69,7 +69,7 @@ function BrandDisplay() {
         </div>
       </div>
       <ProductDisplay />
-    </>
+    </div>
   );
 }
 

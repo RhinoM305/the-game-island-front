@@ -13,7 +13,7 @@ function ProductDisplay() {
   };
 
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-full">
       <div className="flex items-center justify-between">
         <div className="p-2 ml-8 text-6xl text-white bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg text-bold">
           Nintendo
@@ -56,39 +56,7 @@ function ProductDisplay() {
           </li>
         </ul>
       </div>
-      <div className="flex h-full mx-8 mt-2 mt-6 bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg">
-        {/* <div className="w-[250px] flex flex-col text-3xl overflow-hidden justify-center items-center">
-          <button
-            className="relative flex justify-center items-center text-center h-full p-8 w-full bg-[#00FFFF]"
-            id="games"
-          >
-            <img className="" src={require("./content/images/ghost.png")} />
-            <div className="absolute flex items-center justify-center w-full h-full text-4xl text-white transition duration-500 ease-in-out opacity-0 text-bold backdrop-filter backdrop-blur-lg hover:opacity-100">
-              Games
-            </div>
-          </button>
-          <button
-            className="relative flex justify-center items-center text-center h-full p-8 w-full bg-[#FFb852]"
-            id="assecories"
-          >
-            <img className="" src={require("./content/images/buff.png")} />
-            <div className="absolute flex items-center justify-center w-full h-full text-4xl text-white transition duration-500 ease-in-out opacity-0 text-bold backdrop-filter backdrop-blur-lg hover:opacity-100">
-              Assessories
-            </div>
-          </button>
-          <div
-            className="relative flex items-center justify-center w-full h-full p-8 text-center bg-green-500"
-            id="systems"
-          >
-            <img
-              className=""
-              src={require("./content/images/game-console.png")}
-            />
-            <div className="absolute flex items-center justify-center w-full h-full text-4xl text-white transition duration-500 ease-in-out opacity-0 text-bold backdrop-filter backdrop-blur-lg hover:opacity-100">
-              Systems
-            </div>
-          </div>
-        </div> */}
+      <div className="flex h-screen mx-8 mt-2 mt-6 bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg">
         <div className="flex flex-col w-full h-full">
           <div className="flex items-center border-2 border-white rounded-lg h-14 justify-between">
             <div className="ml-12 text-4xl text-white text-bold">Nintendo</div>
@@ -188,6 +156,54 @@ function ProductDisplay() {
                 "n64-set.webp",
                 "Nintendo 64 N64 Original System Console +2 ORIGINAL CONTROLLERS w/ NEW JOYSTICKS",
                 "99.99"
+              )}
+            </li>
+            <li
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              id="item-8"
+              onClick={() => {}}
+            >
+              {isExpand(
+                "item-8",
+                "red-n64.webp",
+                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
+                "899.99"
+              )}
+            </li>
+            <li
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              id="item-8"
+              onClick={() => {}}
+            >
+              {isExpand(
+                "item-8",
+                "red-n64.webp",
+                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
+                "899.99"
+              )}
+            </li>
+            <li
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              id="item-9"
+              onClick={() => {}}
+            >
+              {isExpand(
+                "item-9",
+                "red-n64.webp",
+                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
+                "899.99"
+              )}
+            </li>
+            <li
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              id="item-8"
+              onClick={() => {}}
+            >
+              {isExpand(
+                "item-8",
+                "red-n64.webp",
+                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
+                "899.99"
               )}
             </li>
             <li

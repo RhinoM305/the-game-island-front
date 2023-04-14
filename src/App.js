@@ -2,6 +2,9 @@ import "./index.css";
 import NavBar from "./nav/NavBar";
 import Landing from "./Landing";
 import BrandDisplay from "./BrandDisplay";
+import SocialDisplay from "./SocialDisplay";
+import ShippingDisplay from "./ShippingDisplay";
+import Footer from "./Footer";
 
 function App() {
   return (
@@ -83,6 +86,25 @@ function App() {
       <NavBar />
       <Landing />
       <BrandDisplay />
+      <SocialDisplay />
+      <div className="w-full h-[8rem] bg-black bg-opacity-70 backdrop-filter flex whitespace-nowrap text-white">
+        <img
+          src={require("./content/images/trophy.png")}
+          className="ml-6 my-2"
+        />
+        <div className="flex items-center ml-6">
+          <p className="w-ful text-4xl flex">
+            SIGN UP FOR OUR NEWSLETTER! GET{" "}
+            <p className="font-bold mx-2 text-[yellow]">10% OFF </p> First Order
+          </p>
+        </div>
+        <div className="flex m-auto w-full h-[35%] text-3xl text-black">
+          <input className="w-[55%] ml-auto" />
+          <button className="mr-auto bg-yellow-500 px-1">Subscribe</button>
+        </div>
+      </div>
+      <ShippingDisplay />
+      <Footer />
     </>
   );
 }
