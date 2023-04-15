@@ -84,7 +84,7 @@ function NavBar() {
       </div>
       <div
         id="menu-container"
-        className="fixed top-[154px] w-full h-1/2 z-[49] bg-white"
+        className="fixed top-[154px] w-full h-1/2 z-[49] bg-white hidden"
       >
         <NavBarMenuDisplay />
       </div>
