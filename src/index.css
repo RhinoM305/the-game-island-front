@@ -331,11 +331,4 @@ html{
   animation:moving-grid 0.5s infinite linear;
 }
 
-/* Slide css */
-.slick-slider {
-  height:100%;
-}
 
-.slick-active .active {
- background:black;
-}
