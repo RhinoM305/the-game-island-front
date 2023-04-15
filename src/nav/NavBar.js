@@ -3,6 +3,8 @@ import "../index.css";
 import React from "react";
 import $ from "jquery";
 import NavBarMenuDisplay from "./NavBarMenuDisplay.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 function NavBar() {
   let menuWidth;
@@ -30,7 +32,7 @@ function NavBar() {
             className="w-[50%] h-full text-white font-Titan-One flex text-5xl items-center"
           >
             <div
-              className="w-full text-center mx-2"
+              className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
               onClick={() => {
                 if ($("#menu-container").is(":visible")) {
                   $("#menu-container").slideUp(250);
@@ -42,7 +44,7 @@ function NavBar() {
               Collection
             </div>
             <div
-              className="w-full text-center mx-2"
+              className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
               onClick={() => {
                 if ($("#menu-container").is(":visible")) {
                   $("#menu-container").slideUp(250);
@@ -53,11 +55,8 @@ function NavBar() {
             >
               Account
             </div>
-            <div className="w-full text-center mx-2" onClick={() => {}}>
-              Recent
-            </div>
             <div
-              className="w-full text-center mx-2"
+              className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
               onClick={() => {
                 if ($("#menu-container").is(":visible")) {
                   $("#menu-container").slideUp(250);
@@ -66,7 +65,19 @@ function NavBar() {
                 }
               }}
             >
-              Cart
+              Recent
+            </div>
+            <div
+              className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
+              onClick={() => {
+                if ($("#menu-container").is(":visible")) {
+                  $("#menu-container").slideUp(250);
+                } else {
+                  $("#menu-container").slideDown(250);
+                }
+              }}
+            >
+              <FontAwesomeIcon icon={faCartShopping} />
             </div>
           </div>
         </div>
