@@ -109,43 +109,43 @@ function Footer() {
       <div className="w-full h-[35px] flex justify-center items-center mt-6">
         <div className="bg-white w-[64px] mx-1 h-full p-[2px] rounded-lg border-2">
           <img
-            src={require("./content/payment-images/paypal-logo_1.png")}
+            src={require("../content/payment-images/paypal-logo_1.png")}
             className="w-full h-full"
           />
         </div>
         <div className="bg-white w-[64px] mx-1 h-full p-[2px] rounded-lg border-2">
           <img
-            src={require("./content/payment-images/visa.png")}
+            src={require("../content/payment-images/visa.png")}
             className="w-full h-full"
           />
         </div>
         <div className="bg-white w-[64px] mx-1 h-full p-[2px] rounded-lg border-2">
           <img
-            src={require("./content/payment-images/discover.png")}
+            src={require("../content/payment-images/discover.png")}
             className="w-full h-full"
           />
         </div>
         <div className="bg-white w-[64px] mx-1 h-full p-[2px] rounded-lg border-2">
           <img
-            src={require("./content/payment-images/amex.png")}
+            src={require("../content/payment-images/amex.png")}
             className="w-full h-full"
           />
         </div>
         <div className="bg-white w-[64px] mx-1 h-full p-[2px] rounded-lg border-2">
           <img
-            src={require("./content/payment-images/apple-pay.png")}
+            src={require("../content/payment-images/apple-pay.png")}
             className="w-full h-full"
           />
         </div>
         <div className="bg-white w-[64px] mx-1 h-full p-[2px] rounded-lg border-2">
           <img
-            src={require("./content/payment-images/master.png")}
+            src={require("../content/payment-images/master.png")}
             className="w-full h-full"
           />
         </div>
         <div className="bg-white w-[64px] mx-1 h-full p-[2px] rounded-lg border-2">
           <img
-            src={require("./content/payment-images/card.png")}
+            src={require("../content/payment-images/card.png")}
             className="w-full h-full"
           />
         </div>

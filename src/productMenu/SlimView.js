@@ -12,7 +12,7 @@ function SlimView({ image, name, price }) {
     <>
       <div className="h-[60%] flex justify-center bg-white">
         <img
-          src={require(`./content/temp-images/${image}`)}
+          src={require(`../content/temp-images/${image}`)}
           className="w-auto h-[254px] bg-green-600 object-cover"
         />
       </div>

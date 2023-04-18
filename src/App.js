@@ -1,10 +1,10 @@
 import "./index.css";
 import NavBar from "./nav/NavBar";
-import Landing from "./Landing";
-import BrandDisplay from "./BrandDisplay";
-import SocialDisplay from "./SocialDisplay";
-import ShippingDisplay from "./ShippingDisplay";
-import Footer from "./Footer";
+import Landing from "./landing/Landing";
+import BrandDisplay from "./productMenu/BrandDisplay";
+import SocialDisplay from "./social/SocialDisplay";
+import ShippingDisplay from "./footer/ShippingDisplay";
+import Footer from "./footer/Footer";
 
 function App() {
   return (

@@ -1,15 +1,12 @@
 import $ from "jquery";
 import SlimView from "./SlimView";
-import ExpandView from "./ExpandView";
 import React, { useEffect, useState } from "react";
 
 function ProductDisplay() {
   const [expandId, setExpandId] = useState(null);
 
   const isExpand = (Id, image, name, price) => {
-    if (expandId !== Id)
-      return <SlimView image={image} name={name} price={price} />;
-    return <ExpandView />;
+    return <SlimView image={image} name={name} price={price} />;
   };
 
   return (
@@ -238,64 +235,3 @@ function ProductDisplay() {
 }
 
 export default ProductDisplay;
-
-// <li
-//               className="h-1/5  w-[50%] my-2 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
-//               id="item-4"
-//               onClick={() => {
-//                 $("#item-4").toggleClass("h-1/5 h-1/2");
-//                 if (expandId === "item-4") {
-//                   setExpandId(null);
-//                 } else setExpandId("item-4");
-//               }}
-//             >
-//               {/* {isExpand("item-4")} */}
-//             </li>
-//             <li
-//               className="h-1/5  w-[50%] my-2 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
-//               id="item-5"
-//               onClick={() => {
-//                 $("#item-5").toggleClass("h-1/5 h-1/2");
-//                 if (expandId === "item-5") {
-//                   setExpandId(null);
-//                 } else setExpandId("item-5");
-//               }}
-//             >
-//               {/* {isExpand("item-5")} */}
-//             </li>
-//             <li
-//               className="h-1/5  w-[50%] my-2 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
-//               id="item-6"
-//               onClick={() => {
-//                 $("#item-6").toggleClass("h-1/5 h-1/2");
-//                 if (expandId === "item-6") {
-//                   setExpandId(null);
-//                 } else setExpandId("item-6");
-//               }}
-//             >
-//               {/* {isExpand("item-6")} */}
-//             </li>
-//             <li
-//               className="h-1/5  w-[50%] my-2 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
-//               id="item-7"
-//               onClick={() => {
-//                 $("#item-7").toggleClass("h-1/5 h-1/2");
-//                 if (expandId === "item-7") {
-//                   setExpandId(null);
-//                 } else setExpandId("item-7");
-//               }}
-//             >
-//               {/* {isExpand("item-7")} */}
-//             </li>
-//             <li
-//               className="h-1/5  w-[50%] my-2 border-2 border-white rounded-lg flex hover:bg-black hover:bg-opacity-90"
-//               id="item-8"
-//               onClick={() => {
-//                 $("#item-8").toggleClass("h-1/5 h-1/2");
-//                 if (expandId === "item-8") {
-//                   setExpandId(null);
-//                 } else setExpandId("item-8");
-//               }}
-//             >
-//               {isExpand("item-8")}
-//             </li>

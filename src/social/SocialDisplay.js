@@ -6,7 +6,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -15,7 +15,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -24,7 +24,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -33,7 +33,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -42,7 +42,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -51,7 +51,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -60,7 +60,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -69,7 +69,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -78,7 +78,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -87,7 +87,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -96,7 +96,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -105,7 +105,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -114,7 +114,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -123,7 +123,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>
@@ -132,7 +132,7 @@ function SocialDisplay() {
           <div className=" absolute h-full w-full">CONNECT ME TO AN API!</div>
           <div className="z-50 w-full h-full absolute flex justify-center items-center opacity-0 backdrop-black backdrop-filter backdrop-filter backdrop-blur-lg hover:opacity-80">
             <img
-              src={require("./content/images/instagram.png")}
+              src={require("../content/images/instagram.png")}
               className="opacity-70 scale-[.5]"
             />
           </div>

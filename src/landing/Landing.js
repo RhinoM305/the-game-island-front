@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SlideShow from "./SlideShow";
-import myVideo from "./content/videos/Arcade_Odyssey.mp4";
-import secondBanner from "./content/images/second-banner-fixed.png";
+import myVideo from "../content/videos/Arcade_Odyssey.mp4";
+import secondBanner from "../content/images/second-banner-fixed.png";
 import $ from "jquery";
 
 function Landing() {
