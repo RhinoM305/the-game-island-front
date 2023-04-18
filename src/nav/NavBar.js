@@ -29,7 +29,7 @@ function NavBar() {
           </div>
           <div
             id="mainNavMenu"
-            className="w-[50%] h-full text-white font-Titan-One flex text-5xl items-center"
+            className="w-[50%] h-full text-white font-Titan-One flex text-4xl items-center"
           >
             <div
               className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
@@ -41,7 +41,7 @@ function NavBar() {
                 }
               }}
             >
-              Collection
+              Stock
             </div>
             <div
               className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
