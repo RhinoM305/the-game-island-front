@@ -17,10 +17,10 @@ function SlimView({ image, name, price }) {
         />
       </div>
       <div className="flex flex-col w-full h-full text-white">
-        <p className="h-1/2 mb-12 mt-6 text-2xl text-center cursor-pointer hover:text-[yellow]">
+        <p className="h-[70%] mb-12 mt-6 text-2xl text-center cursor-pointer hover:text-[yellow]">
           {name}
         </p>
-        <div className="flex w-full h-[40%] pr-8 pt-2 pb-2text-xl border-t-4 border-white">
+        <div className="flex w-full h-[30%] pr-8 pt-2 pb-2 text-xl border-t-4 border-white">
           <button
             title="Add to cart"
             className="mx-1 text-center fa-brands fa-font-awesome w-[20%] hover:bg-white hover:text-black"
