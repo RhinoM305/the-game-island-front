@@ -77,7 +77,7 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-1",
-                "finalfantasy.webp",
+                "https://i.imgur.com/YAmkTq9.png",
                 "Final Fantasy Legend 2 Original Nintendo Gameboy Game",
                 "299.99"
               )}
@@ -89,7 +89,7 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-2",
-                "n64.webp",
+                "https://i.imgur.com/7qj6Dx8.png",
                 "Funtastik Purple Nintendo 64 N64 System Console w/ OEM Controller Bundle",
                 "299.99"
               )}
@@ -101,7 +101,7 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-3",
-                "supermario3.webp",
+                "https://i.imgur.com/mYjnWAp.png",
                 "Super Mario Brothers Bros 3 Original NES Nintendo Game",
                 "24.99"
               )}
@@ -114,7 +114,8 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-4",
-                "nes-rare.webp",
+
+                "https://i.imgur.com/CPjsR2K.png",
                 "Contra Original Nintendo NES Game (Complete, Rare)",
                 "299.99"
               )}
@@ -126,7 +127,7 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-5",
-                "gameboy-advance.webp",
+                "https://i.imgur.com/V3LUJoG.png",
                 "Custom IPS V2 Nintendo GameBoy Advance System Handheld Console - Atomic Purple",
                 "499.99"
               )}
@@ -138,7 +139,8 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-6",
-                "gray-n64.webp",
+
+                "https://i.imgur.com/MNKdrpA.png",
                 " Funtastic Nintendo 64 Smoke Gray Atomic Black N64 Console Complete",
                 "199.99"
               )}
@@ -150,7 +152,7 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-7",
-                "n64-set.webp",
+                "https://i.imgur.com/7QrXPZJ.png",
                 "Nintendo 64 N64 Original System Console +2 ORIGINAL CONTROLLERS w/ NEW JOYSTICKS",
                 "99.99"
               )}
@@ -162,7 +164,7 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-8",
-                "red-n64.webp",
+                "https://i.imgur.com/kCMGG30.png",
                 "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
                 "899.99"
               )}
@@ -174,7 +176,7 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-8",
-                "red-n64.webp",
+                "https://i.imgur.com/kCMGG30.png",
                 "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
                 "899.99"
               )}
@@ -186,7 +188,7 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-9",
-                "red-n64.webp",
+                "https://i.imgur.com/kCMGG30.png",
                 "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
                 "899.99"
               )}
@@ -198,7 +200,7 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-8",
-                "red-n64.webp",
+                "https://i.imgur.com/kCMGG30.png",
                 "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
                 "899.99"
               )}
@@ -210,7 +212,7 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-8",
-                "red-n64.webp",
+                "https://i.imgur.com/kCMGG30.png",
                 "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
                 "899.99"
               )}
@@ -222,7 +224,7 @@ function ProductDisplay() {
             >
               {isExpand(
                 "item-8",
-                "red-n64.webp",
+                "https://i.imgur.com/kCMGG30.png",
                 "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
                 "899.99"
               )}
