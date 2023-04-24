@@ -9,47 +9,38 @@ import {
 
 function SlimView({ image, name, price }) {
   return (
-    <>
-      <div className="h-[60%] flex justify-center bg-white cursor-pointer">
-        <img
-          src={image}
-          className="w-auto h-[254px] bg-green-600 object-cover"
-        />
+    <div className="flex flex-col w-full h-full text-white">
+      <div className="h-[50%] w-full bg-white flex justify-center items-center">
+        <img className="h-full w-auto" src={image} />
       </div>
-      <div className="flex flex-col w-full h-full text-white">
-        <p className="h-[70%] mb-auto mt-6 text-2xl text-center cursor-pointer hover:text-[yellow]">
+      <div className="h-[50%] w-full flex flex-col justify-center">
+        <div className="h-[70%] font-white text-2xl text-center pt-4 hover:text-[yellow]">
           {name}
-        </p>
-        <div className="flex w-full h-[30%] pr-8 pt-2 pb-2 text-xl border-t-4 border-white">
-          <button
-            title="Add to cart"
-            className="mx-1 text-center fa-brands fa-font-awesome w-[20%] hover:bg-white hover:text-black"
-          >
-            <FontAwesomeIcon icon={faCartPlus} size="2xl" />
-          </button>
-          <button
-            title="Add to wishlist"
-            className="mx-1 text-center w-[20%] hover:bg-white hover:text-black"
-          >
-            <FontAwesomeIcon icon={faHeart} size="2xl" />
-          </button>
-          <button
-            title="View"
-            className="mx-1 mr-auto text-center w-[20%] hover:bg-white hover:text-black"
-          >
-            <FontAwesomeIcon icon={faEllipsis} size="2xl" />
-          </button>
-          <div className="w-[20%] flex justify-center items-center text-xl">
+        </div>
+        <div className="h-[30%]  flex justify-between border-t-4 border-white px-4 text-2xl">
+          <div className="w-full mr-4 h-full flex items-center">
+            <div className="w-[33.33%] h-full hover:bg-white flex items-center justify-center hover:text-black">
+              <FontAwesomeIcon icon={faCartPlus} size="2xl" />
+            </div>
+            <div className="w-[33.33%] h-full hover:bg-white flex items-center justify-center hover:text-black">
+              <FontAwesomeIcon icon={faHeart} size="2xl" />
+            </div>
+            <div className="w-[33.33%] h-full hover:bg-white flex items-center justify-center hover:text-black">
+              <FontAwesomeIcon icon={faEllipsis} size="2xl" />
+            </div>
+          </div>
+          <div className="h-full flex items-center">
+            {" "}
             <FontAwesomeIcon
               icon={faDollarSign}
               size="xl"
               style={{ marginRight: "6px" }}
             />
-            {` ${price}`}
+            {price}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
