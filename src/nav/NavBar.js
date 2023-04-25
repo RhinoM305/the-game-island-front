@@ -1,13 +1,19 @@
 import thegameisland from "../content/images/thegameisland.png";
 import "../index.css";
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import $ from "jquery";
 import NavBarMenuDisplay from "./NavBarMenuDisplay.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 function NavBar() {
+  const navigate = useNavigate();
+  let [clicked, setClicked] = useState(null);
+
   let menuWidth;
+
   return (
     <>
       <div className="z-[48] h-[155px] w-full backdrop-filter bg-opacity-40 backdrop-blur-lg bg-black fixed top-0 left-0">
@@ -34,10 +40,21 @@ function NavBar() {
             <div
               className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
               onClick={() => {
-                if ($("#menu-container").is(":visible")) {
+                if (clicked === "stock") {
+                  navigate("/");
+                  setClicked(null);
                   $("#menu-container").slideUp(250);
-                } else {
+                  return;
+                } else if ($("#menu-container").is(":hidden")) {
+                  setClicked("stock");
+
+                  navigate("/stock");
                   $("#menu-container").slideDown(250);
+                  return;
+                } else {
+                  navigate("/stock");
+
+                  setClicked("stock");
                 }
               }}
             >
@@ -46,10 +63,21 @@ function NavBar() {
             <div
               className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
               onClick={() => {
-                if ($("#menu-container").is(":visible")) {
+                if (clicked === "account") {
+                  navigate("/");
+                  setClicked(null);
                   $("#menu-container").slideUp(250);
-                } else {
+                  return;
+                } else if ($("#menu-container").is(":hidden")) {
+                  setClicked("account");
+
+                  navigate("/account");
                   $("#menu-container").slideDown(250);
+                  return;
+                } else {
+                  navigate("/account");
+
+                  setClicked("account");
                 }
               }}
             >
@@ -58,10 +86,21 @@ function NavBar() {
             <div
               className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
               onClick={() => {
-                if ($("#menu-container").is(":visible")) {
+                if (clicked === "recent") {
+                  navigate("/");
+                  setClicked(null);
                   $("#menu-container").slideUp(250);
-                } else {
+                  return;
+                } else if ($("#menu-container").is(":hidden")) {
+                  setClicked("recent");
+
+                  navigate("/recent");
                   $("#menu-container").slideDown(250);
+                  return;
+                } else {
+                  navigate("/recent");
+
+                  setClicked("recent");
                 }
               }}
             >
@@ -70,10 +109,21 @@ function NavBar() {
             <div
               className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
               onClick={() => {
-                if ($("#menu-container").is(":visible")) {
+                if (clicked === "cart") {
+                  navigate("/");
+                  setClicked(null);
                   $("#menu-container").slideUp(250);
-                } else {
+                  return;
+                } else if ($("#menu-container").is(":hidden")) {
+                  setClicked("cart");
+
+                  navigate("/cart");
                   $("#menu-container").slideDown(250);
+                  return;
+                } else {
+                  navigate("/cart");
+
+                  setClicked("cart");
                 }
               }}
             >
@@ -82,12 +132,7 @@ function NavBar() {
           </div>
         </div>
       </div>
-      <div
-        id="menu-container"
-        className="fixed top-[154px] w-full h-1/2 z-[49] bg-white hidden"
-      >
-        <NavBarMenuDisplay />
-      </div>
+      <NavBarMenuDisplay />
     </>
   );
 }
