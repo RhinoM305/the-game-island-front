@@ -1,10 +1,11 @@
+import React, { lazy, Suspense } from "react";
 import "./index.css";
 import NavBar from "./nav/NavBar";
 import Landing from "./landing/Landing";
-import BrandDisplay from "./productMenu/BrandDisplay";
-import SocialDisplay from "./social/SocialDisplay";
-import ShippingDisplay from "./footer/ShippingDisplay";
-import Footer from "./footer/Footer";
+const BrandDisplay = lazy(() => import("./productMenu/BrandDisplay"));
+const SocialDisplay = lazy(() => import("./social/SocialDisplay"));
+const ShippingDisplay = lazy(() => import("./footer/ShippingDisplay"));
+const Footer = lazy(() => import("./footer/Footer"));
 
 function Layout() {
   return (
@@ -85,8 +86,12 @@ function Layout() {
 
       <NavBar />
       <Landing />
-      <BrandDisplay />
-      <SocialDisplay />
+
+      <Suspense fallback={<>Loading...</>}>
+        <BrandDisplay />
+        <SocialDisplay />
+      </Suspense>
+
       <div className="w-full h-[8rem] bg-black bg-opacity-70 backdrop-filter flex whitespace-nowrap text-white">
         <img
           src={require("./content/images/trophy.png")}
@@ -103,8 +108,10 @@ function Layout() {
           <button className="mr-auto bg-yellow-500 px-1">Subscribe</button>
         </div>
       </div>
-      <ShippingDisplay />
-      <Footer />
+      <Suspense fallback={<>Loading...</>}>
+        <ShippingDisplay />
+        <Footer />
+      </Suspense>
     </>
   );
 }

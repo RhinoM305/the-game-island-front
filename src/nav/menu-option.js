@@ -111,10 +111,13 @@ export function Account() {
         </Routes>
       </div>
       <div className="w-1/2 flex flex-col items-center pt-12">
-        <img
-          className="shadow w-[230px] h-[45%] align-middle border-none shadow rounded-full"
-          src="https://i.imgur.com/4cUF4I7.jpg"
-        />
+        <div className="rounded-full h-56 w-56 z-[49]">
+          <img
+            className="shadow w-full h-full align-middle border-none shadow rounded-full"
+            // src="https://i.imgur.com/4cUF4I7.jpg"
+          />
+        </div>
+        <div className="absolute bg-slate-700 rounded-full h-56 w-56 z-[48]"></div>
 
         <p className="text-white mt-4 text-3xl underline font-bold">
           Hello, Ryan Moreno
