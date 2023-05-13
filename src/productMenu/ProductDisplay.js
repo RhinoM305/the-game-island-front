@@ -1,9 +1,23 @@
-import $ from "jquery";
 import SlimView from "./SlimView";
 import React, { useEffect, useState } from "react";
+import { useQuery } from "@apollo/client";
+import { LOAD_PRODUCTS } from "../graphQL/Queries";
 
 function ProductDisplay() {
   const [expandId, setExpandId] = useState(null);
+
+  const { error, loading, data } = useQuery(LOAD_PRODUCTS);
+
+  useEffect(() => {
+    if (error) {
+      return console.log(`Error: ${error}`);
+    }
+    if (loading) {
+      return console.log("Loading...");
+    }
+
+    console.log(data);
+  }, [data]);
 
   const isExpand = (Id, image, name, price) => {
     return <SlimView image={image} name={name} price={price} />;

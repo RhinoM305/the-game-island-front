@@ -1,12 +1,25 @@
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const client = new ApolloClient({
+  uri: `http://localhost:3001/graphql`,
+  cache: new InMemoryCache(),
+});
+
+// Find our rootElement or throw an error if it doesn't exist
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error("Failed to find the root element");
+const root = ReactDOM.createRoot(rootElement);
+
+// Pass the ApollowClient instance to the ApolloProvider component
+
 root.render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>
+  </ApolloProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

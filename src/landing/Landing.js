@@ -33,7 +33,9 @@ function Landing() {
         name: "1",
         content: (
           <video
-            src={myVideo}
+            src={
+              "https://cdn.shopify.com/videos/c/o/v/64199f56f8e84ef088d121ba28f87513.mp4"
+            }
             className={`w-full object-fill`}
             style={{ height: `${height}px` }}
             autoPlay
