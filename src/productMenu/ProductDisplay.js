@@ -1,33 +1,34 @@
 import SlimView from "./SlimView";
-import React, { useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
-import { LOAD_PRODUCTS } from "../graphQL/Queries";
 
-function ProductDisplay() {
-  const [expandId, setExpandId] = useState(null);
+function ProductDisplay({brand, products,index}) {
+  products = products[index]
 
-  const { error, loading, data } = useQuery(LOAD_PRODUCTS);
+  const listProducts = (products) => {
+    return (
+      <ul className="flex flex-wrap h-full mx-2 my-2 overflow-y-scroll">
+        {products.map((product) => {
+          return (
+            <li
+              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
+              id={product.id}
+              onClick={() => {}}
+            >
+              <SlimView image={product.image} name={product.title} price={product.price} />
+            </li>
+          )
+        })}
+      </ul>
+    )
+  }
 
-  useEffect(() => {
-    if (error) {
-      return console.log(`Error: ${error}`);
-    }
-    if (loading) {
-      return console.log("Loading...");
-    }
 
-    console.log(data);
-  }, [data]);
 
-  const isExpand = (Id, image, name, price) => {
-    return <SlimView image={image} name={name} price={price} />;
-  };
 
   return (
     <div className="w-full h-full">
       <div className="flex items-center justify-between">
         <div className="p-2 ml-8 text-6xl text-white bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg text-bold">
-          Nintendo
+          {brand}
         </div>
       </div>
       <div className="w-auto h-auto mx-8 mt-6 text-4xl text-white bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg">
@@ -69,181 +70,21 @@ function ProductDisplay() {
       </div>
       <div className="flex h-screen mx-8 mt-2 mt-6 bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg">
         <div className="flex flex-col w-full h-full">
-          <div className="flex items-center border-2 border-white rounded-lg h-14 justify-between">
-            <div className="ml-12 text-4xl text-white text-bold">Nintendo</div>
-            <div className="text-4xl mr-6 text-bold text-white">
-              <button className="mx-3 w-auto px-8 hover:bg-white hover:text-black">
+          <div className="flex items-center justify-between border-2 border-white rounded-lg h-14">
+            <div className="ml-12 text-4xl text-white text-bold">{brand}</div>
+            <div className="mr-6 text-4xl text-white text-bold">
+              <button className="w-auto px-8 mx-3 hover:bg-white hover:text-black">
                 Games (330)
               </button>
-              <button className="mx-3 w-auto px-8 hover:bg-white hover:text-black">
+              <button className="w-auto px-8 mx-3 hover:bg-white hover:text-black">
                 Assesories (291)
               </button>
-              <button className="mx-3 w-auto px-8 hover:bg-white hover:text-black">
+              <button className="w-auto px-8 mx-3 hover:bg-white hover:text-black">
                 Systems (22)
               </button>
             </div>
           </div>
-          <ul className="flex flex-wrap mx-2 h-full my-2 overflow-y-scroll">
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-1"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-1",
-                "https://i.imgur.com/YAmkTq9.png",
-                "Final Fantasy Legend 2 Original Nintendo Gameboy Game",
-                "299.99"
-              )}
-            </li>
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-2"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-2",
-                "https://i.imgur.com/7qj6Dx8.png",
-                "Funtastik Purple Nintendo 64 N64 System Console w/ OEM Controller Bundle",
-                "299.99"
-              )}
-            </li>
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-3"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-3",
-                "https://i.imgur.com/mYjnWAp.png",
-                "Super Mario Brothers Bros 3 Original NES Nintendo Game",
-                "24.99"
-              )}
-            </li>
-
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-4"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-4",
-
-                "https://i.imgur.com/CPjsR2K.png",
-                "Contra Original Nintendo NES Game (Complete, Rare)",
-                "299.99"
-              )}
-            </li>
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-5"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-5",
-                "https://i.imgur.com/V3LUJoG.png",
-                "Custom IPS V2 Nintendo GameBoy Advance System Handheld Console - Atomic Purple",
-                "499.99"
-              )}
-            </li>
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-6"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-6",
-
-                "https://i.imgur.com/MNKdrpA.png",
-                " Funtastic Nintendo 64 Smoke Gray Atomic Black N64 Console Complete",
-                "199.99"
-              )}
-            </li>
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-7"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-7",
-                "https://i.imgur.com/7QrXPZJ.png",
-                "Nintendo 64 N64 Original System Console +2 ORIGINAL CONTROLLERS w/ NEW JOYSTICKS",
-                "99.99"
-              )}
-            </li>
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-8"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-8",
-                "https://i.imgur.com/kCMGG30.png",
-                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
-                "899.99"
-              )}
-            </li>
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-8"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-8",
-                "https://i.imgur.com/kCMGG30.png",
-                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
-                "899.99"
-              )}
-            </li>
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-9"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-9",
-                "https://i.imgur.com/kCMGG30.png",
-                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
-                "899.99"
-              )}
-            </li>
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-8"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-8",
-                "https://i.imgur.com/kCMGG30.png",
-                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
-                "899.99"
-              )}
-            </li>
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-8"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-8",
-                "https://i.imgur.com/kCMGG30.png",
-                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
-                "899.99"
-              )}
-            </li>
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id="item-8"
-              onClick={() => {}}
-            >
-              {isExpand(
-                "item-8",
-                "https://i.imgur.com/kCMGG30.png",
-                "Nintendo 64 N64 System Watermelon Red Clear System Console w/ OEM Controller Bundle",
-                "899.99"
-              )}
-            </li>
-          </ul>
+          {products && listProducts(products)}
         </div>
       </div>
     </div>

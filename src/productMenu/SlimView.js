@@ -7,6 +7,7 @@ import {
   faDollarSign,
 } from "@fortawesome/free-solid-svg-icons";
 
+
 function SlimView({ image, name, price }) {
   return (
     <div className="flex flex-col w-full h-full text-white">
