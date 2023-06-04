@@ -1,20 +1,19 @@
 import React, {useState,useEffect} from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+  import $ from "jquery";
+  import "./pages.css";
+  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faArrowRight,
     faArrowLeft
   } from "@fortawesome/free-solid-svg-icons";
-  import $ from "jquery";
-  import "./pages.css";
 
 
-function PageGen({pageInfo,setPagination,pagination,setProducts,index,setIndex,length}) {
+function PageGen({pageInfo,setPagination,pagination,setProducts,index,setIndex,length, setPageMultiplier, pageMultiplier}) {
     const {numberOfProducts, hasNextPage, hasPreviousPage, endCursor, startCursor} = pageInfo;
     const [pages, setPages] = useState([]);
-    const [pageMultiplier, setPageMultiplier] = useState(0);
-    const numOfPages = Math.ceil(numberOfProducts / 10);
+    const numOfPages = Math.ceil(numberOfProducts / 20);
 
-
+    console.log(pageMultiplier);
     useEffect(() => {
         let p = []
         for(let i = 1; i <= length; i++) {
@@ -58,14 +57,13 @@ function PageGen({pageInfo,setPagination,pagination,setProducts,index,setIndex,l
 
     const handleLastPage = () => {
         //grab multiplier associated with the last page of the products.
-        const getMaxMultiplier = Math.ceil(numberOfProducts / 50) * 5 - 5;
+        const getMaxMultiplier = Math.ceil(numberOfProducts / 100) * 5 - 5;
         setPageMultiplier(getMaxMultiplier)
         //normal process simlair too handleprev and handlenext.
         setPages([])
         //this algorithim determins what index the last page belongs too.
-        console.log(Math.ceil((numberOfProducts % 50) / 10) - 1)
-        setIndex(Math.ceil((numberOfProducts % 50) / 10) - 1)
-        setPagination({first: 50, after: null, before: null, last: null, apiIndex: null, pageNum: Math.ceil(numberOfProducts / 50), reverse: true})
+        setIndex(Math.ceil((numberOfProducts % 100) / 20) - 1)
+        setPagination({first: 100, after: null, before: null, last: null, apiIndex: null, pageNum: Math.ceil(numberOfProducts / 100), reverse: true})
     }
 
 
@@ -86,7 +84,7 @@ function PageGen({pageInfo,setPagination,pagination,setProducts,index,setIndex,l
             setPageMultiplier(pageMultiplier + 5)
             setPages([])
             setIndex(0)
-            setPagination({first: 50, after: endCursor, before: null, last: null, apiIndex: pagination.apiIndex + 1, pageNum: pagination.pageNum + 1})
+            setPagination({first: 100, after: endCursor, before: null, last: null, apiIndex: pagination.apiIndex + 1, pageNum: pagination.pageNum + 1})
         } else if(index + 1 === length && !hasNextPage) {
             return;
         } else { 
@@ -105,7 +103,7 @@ function PageGen({pageInfo,setPagination,pagination,setProducts,index,setIndex,l
             setPageMultiplier(pageMultiplier - 5)
             setPages([])
             setIndex(4);
-            setPagination({first: 50, after: null, before: null, last: null, apiIndex: pagination.apiIndex - 1, pageNum: pagination.pageNum - 1})
+            setPagination({first: 100, after: null, before: null, last: null, apiIndex: pagination.apiIndex - 1, pageNum: pagination.pageNum - 1})
 
         } else if(index === 0 && !hasPreviousPage) {
             return;
@@ -119,13 +117,13 @@ function PageGen({pageInfo,setPagination,pagination,setProducts,index,setIndex,l
     }
   
   return (
-    <div className="w-full h-[50px] flex items-center justify-center mt-2">
-        {pages.length && <div className="flex items-center justify-center w-auto h-full text-white bg-black backdrop-filter bg-opacity-70 p-[2px] border-2 border-white rounded-lg">
+  
+        pages.length && <div className="flex items-center justify-center w-auto h-full text-white bg-black backdrop-filter bg-opacity-70 p-[2px] border-2 border-white rounded-lg">
          <div className="flex items-center h-full mx-4 hover:text-[yellow] cursor-pointer" onClick={() => handlePreviousPage()}><FontAwesomeIcon icon={faArrowLeft} size="2xl"/></div>
-            {pages}
+         {pages}
          <div className="flex items-center h-full mx-4 hover:text-[yellow] cursor-pointer" onClick={() => handleNextPage()}><FontAwesomeIcon icon={faArrowRight} size="2xl"/></div>
-        </div>}
-    </div>
+        </div>
+   
   );
 }
 
