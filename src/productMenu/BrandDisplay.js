@@ -10,13 +10,13 @@ function BrandDisplay() {
   const [brand , setBrand] = useState("All")
   const [Query, setQuery] = useState(null)
   const [pageInfo, setPageInfo] = useState(null)
-  const [pagination, setPagination] = useState({first: 100, after: null, before: null, last: null, apiIndex: 1, pageNum: 1})
+  const [pagination, setPagination] = useState({first: 50, after: null, before: null, last: null, apiIndex: 1, pageNum: 1, reverse: false})
   const [index, setIndex] = useState(0)
 
  
 
   const { error, loading, data } = useQuery(LOAD_PRODUCTS,{
-    variables: { first: pagination.first, after: pagination.after, before: pagination.before, last: pagination.last, Query: Query, pageNum: pagination.pageNum }
+    variables: { first: pagination.first, after: pagination.after, before: pagination.before, last: pagination.last, Query: Query, pageNum: pagination.pageNum, reverse: pagination.reverse },
   });
   useEffect(() => {
     
@@ -31,15 +31,12 @@ function BrandDisplay() {
       let allProducts = data.getProducts.products;
       let pagedProducts = [];
 
-      for(let i = 0; i < allProducts.length; i += 20) {
-        const page = allProducts.slice(i, i + 20);
+      for(let i = 0; i < allProducts.length; i += 10) {
+        const page = allProducts.slice(i, i + 10);
         pagedProducts.push(page);
       }
-      console.log(pagedProducts.length)
       setProducts(pagedProducts);
-      // console.log("pagination",pagination)
-      // console.log("products",products)
-    
+
   }, [data,Query,pagination]);
 
   return (
