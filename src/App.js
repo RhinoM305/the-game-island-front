@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Layout from "./Layout.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 

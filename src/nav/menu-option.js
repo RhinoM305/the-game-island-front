@@ -1,162 +1,57 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 const { Overview, Orders, Wishlist } = require("./account-options");
 
-export function Stock() {
-  return (
-    <div className="w-full h-full flex flex-wrap">
-      <div className="w-[25%] h-1/2 pl-4 pt-3">
-        <p className="text-white font-bold text-5xl underline">Nintendo</p>
-        <p className="text-white text-3xl hover:text-[yellow]">
-          Nintendo games
-        </p>
-        <p className="text-white text-3xl hover:text-[yellow]">
-          Nintendo accessories
-        </p>
-        <p className="text-white text-3xl hover:text-[yellow]">
-          Nintendo systems
-        </p>
-      </div>
-      <div className="w-[25%] h-1/2 pl-4 pt-3">
-        <p className="text-white font-bold text-5xl underline">SEGA</p>
-        <p className="text-white text-3xl hover:text-[yellow]">SEGA games</p>
-        <p className="text-white text-3xl hover:text-[yellow]">
-          SEGA accessories
-        </p>
-        <p className="text-white text-3xl hover:text-[yellow]">SEGA systems</p>
-      </div>
-      <div className="w-[25%] h-1/2 pl-4 pt-3">
-        <p className="text-white font-bold text-5xl underline">Xbox</p>
-        <p className="text-white text-3xl hover:text-[yellow]">Xbox games</p>
-        <p className="text-white text-3xl hover:text-[yellow]">
-          Xbox accessories
-        </p>
-        <p className="text-white text-3xl hover:text-[yellow]">Xbox systems</p>
-      </div>
-      <div className="w-[25%] h-1/2 pl-4 pt-3">
-        <p className="text-white font-bold text-5xl underline">Atari</p>
-        <p className="text-white text-3xl hover:text-[yellow]">Atari games</p>
-        <p className="text-white text-3xl hover:text-[yellow]">
-          Atari accessories
-        </p>
-        <p className="text-white text-3xl hover:text-[yellow]">Atari systems</p>
-      </div>
-      <div className="w-[25%] h-1/2 pl-4 pt-3">
-        <p className="text-white font-bold text-5xl underline">Playstation</p>
-        <p className="text-white text-3xl hover:text-[yellow]">
-          Playstation games
-        </p>
-        <p className="text-white text-3xl hover:text-[yellow]">
-          Playstation accessories
-        </p>
-        <p className="text-white text-3xl hover:text-[yellow]">
-          Playstation systems
-        </p>
-      </div>
-      <div className="w-[25%] h-1/2 pl-4 pt-3">
-        <p className="text-white font-bold text-5xl underline">Gamer Gear</p>
-        <div className="flex flex-wrap">
-          <p className="text-white w-1/2 text-3xl hover:text-[yellow]">
-            Apparel
-          </p>
 
-          <p className="text-white w-1/2 text-3xl hover:text-[yellow]">Books</p>
-          <p className="text-white w-1/2 text-3xl hover:text-[yellow]">
-            Repair Parts
-          </p>
-          <p className="text-white w-1/2 text-3xl hover:text-[yellow]">
-            Puzzles
-          </p>
-          <p className="text-white w-1/2 text-3xl hover:text-[yellow]">Hats</p>
-          <p className="text-white w-1/2 text-3xl hover:text-[yellow]">
-            DVD/Movies
-          </p>
-          <p className="text-white w-1/2 text-3xl hover:text-[yellow]">
-            Board Games
-          </p>
-        </div>
-      </div>
-      <div className="w-[25%] h-1/2 pl-4 pt-3">
-        <p className="text-white font-bold text-5xl underline">Imports</p>
-        <p className="text-white text-3xl hover:text-[yellow]">Import games</p>
-        <p className="text-white text-3xl hover:text-[yellow]">
-          Import accessories
-        </p>
-        <p className="text-white text-3xl hover:text-[yellow]">
-          Imports systems
-        </p>
-      </div>
-      <div className="w-[25%] h-1/2 pl-2 text-white flex flex-col">
-        <p className="text-4xl mb-4 w-[250px] text-center p-5 border-2 rounded-lg border-white hover:scale-[1.2] hover:text-[yellow] ">
-          Featured <FontAwesomeIcon icon={faArrowRight} />
-        </p>
-        <p className="text-4xl mt-4 w-[250px] text-center p-5 border-2 rounded-lg border-white hover:scale-[1.2] hover:text-[yellow] ">
-          New <FontAwesomeIcon icon={faArrowRight} />
-        </p>
-      </div>
-    </div>
-  );
-}
-export function Account() {
+export function Account({setLoggedIn}) {
   const navigate = useNavigate();
-
+  const customer = JSON.parse(localStorage.getItem('thegameislandCustyInfo'));
+  
   return (
-    <div className="w-full h-full flex">
-      <div className="w-1/2">
-        <Routes>
-          <Route path="/overview" element={<Overview />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-        </Routes>
-      </div>
-      <div className="w-1/2 flex flex-col items-center pt-12">
-        <div className="rounded-full h-56 w-56 z-[49]">
-          <img
-            className="shadow w-full h-full align-middle border-none shadow rounded-full"
-            // src="https://i.imgur.com/4cUF4I7.jpg"
-          />
-        </div>
-        <div className="absolute bg-slate-700 rounded-full h-56 w-56 z-[48]"></div>
-
-        <p className="text-white mt-4 text-3xl underline font-bold">
-          Hello, Ryan Moreno
-        </p>
-
-        <p className="text-white text-2xl hover:text-[yellow]">
+    <>
+      <p className="mt-4 text-3xl font-bold text-white border-b-2">
+        Hello, {customer.firstName} {customer.lastName}
+      </p>
+    <div className="flex w-full h-full">
+      <div className="flex flex-col items-start justify-start px-2 text-lg whitespace-no-wrap w-[10%]">
+        <Link 
+        className="text-white hover:text-[yellow]"
+        to={"/account"}
+        relative="path"
+        >
           Account Overview
-        </p>
-        <p
-          className="text-white text-2xl hover:text-[yellow]"
-          onClick={() => {
-            navigate("/overview");
-          }}
+        </Link>
+        <Link
+          className="text-white hover:text-[yellow]"
+          to={"orders"}
+          relative="path"
         >
           Orders
-        </p>
+        </Link>
         <p
-          className="text-white text-2xl hover:text-[yellow]"
+          className="text-white hover:text-[yellow]"
           onClick={() => {
-            navigate("/orders");
-          }}
-        >
-          Wishlist
-        </p>
-        <p
-          className="text-white text-2xl hover:text-[yellow]"
-          onClick={() => {
-            navigate("/wishlist");
+            localStorage.removeItem('thegameislandCustyInfo')
+            localStorage.removeItem('thegameislandToken')
+            setLoggedIn(false);
+            navigate("/")
           }}
         >
           Log Out
         </p>
       </div>
+      <div className="w-[90%]">
+        <Routes>
+          <Route path={`/*`} element={<Overview />} />
+          <Route path={`/orders`} element={<Orders />} />
+        </Routes>
+      </div>
     </div>
+    </>
   );
 }
-export function Recent() {
-  return <div className="w-full h-full"></div>;
-}
+
 export function Cart() {
   return <div className="w-full h-full">a</div>;
 }

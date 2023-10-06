@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from "react";
 import SlideShow from "./SlideShow";
-import myVideo from "../content/videos/Arcade_Odyssey.mp4";
 import secondBanner from "../content/images/second-banner-fixed.png";
 import $ from "jquery";
+import ProductNav from "../nav/ProductNav";
 
-function Landing() {
+
+function Caorsuel({setProductDetail}) {
   const [displaySlides, setDisplaySlides] = useState(null);
-  let height = null;
+  const [dim, setDim] = useState({width: null, height: null});
+  let [clicked, setClicked] = useState(null);
+
   let slides = null;
+  let height = null;
 
   const CustomPrevArrow = (props) => (
     <button
-      className="z-[3] fa fa-arrow-left text-white hover:text-slate-300 transform hover:scale-[5.5] transition-all ml-12 scale-[4.0]"
+      className="fa fa-arrow-left text-white hover:text-slate-300 transform hover:scale-[3] transition-all ml-12 scale-[2.5]"
       onClick={() => refslide.current.slickPrev()}
     ></button>
   );
   const CustomNextArrow = (props) => (
     <button
-      className="z-[3] fa fa-arrow-right text-white hover:text-slate-300 transform hover:scale-[5.5] transition-all mr-12 scale-[4.0]"
+      className="fa fa-arrow-right text-white hover:text-slate-300 transform hover:scale-[3] transition-all mr-12 scale-[2.5]"
       onClick={() => refslide.current.slickNext()}
     ></button>
   );
@@ -26,10 +30,12 @@ function Landing() {
 
   useEffect(() => {
     const elementHeight = $("#swrapper").height();
-    const height = elementHeight;
+    const elementWidth = $("#swrapper").width();
+    height = elementHeight;
+  
     slides = [
       {
-        classes: "bg-white",
+        classes: "bg-[#484848]",
         name: "1",
         content: (
           <video
@@ -60,10 +66,11 @@ function Landing() {
     ];
 
     loadSlides();
+    setDim({width: elementWidth, height: elementHeight})
   }, []);
 
   let setting = {
-    dots: true,
+    dots: false,
     arrows: false,
     infinite: true,
     speed: 500,
@@ -81,7 +88,7 @@ function Landing() {
       </ul>
     ),
     customPaging: (i) => (
-      <div className="w-4 h-4 mt-4 bg-white rounded-full active"></div>
+      <div className="w-4 h-4 mt-4 bg-[#484848] rounded-full active"></div>
     ),
   };
   function loadSlides() {
@@ -90,22 +97,26 @@ function Landing() {
         slides={slides}
         setting={setting}
         refslide={refslide}
-        elementHeight={height}
+        height={height}
       />
     );
   }
 
   return (
-    <div className="z-10 flex flex-col items-center justify-center w-screen h-screen">
-      <div className="w-full mt-24 h-5/6" id="swrapper">
-        <div className="absolute flex items-center justify-between w-full h-full">
-          <CustomPrevArrow />
-          <CustomNextArrow />
-        </div>
-        {displaySlides}
-      </div>
+    <div className="flex flex-col items-center justify-center w-full h-full">
+      <ProductNav setProductDetail={setProductDetail}/>
+      <div className="w-full h-[470px] bg-red-500" id="swrapper">
+<div style={{width: `${dim.width}px`, height: `${dim.height}px`}} className="absolute z-[2] flex items-center justify-between">
+      <CustomPrevArrow />
+      <CustomNextArrow />
+</div>
+{displaySlides}
+</div>
     </div>
   );
 }
 
-export default Landing;
+export default Caorsuel;
+
+// This is the old contents of our return statement, I will leave the old functions just in case I decide to revert some of the old features.
+

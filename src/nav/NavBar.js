@@ -1,127 +1,145 @@
 import thegameisland from "../content/images/thegameisland.png";
 import "../index.css";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate} from "react-router-dom";
 
 import $ from "jquery";
 import NavBarMenuDisplay from "./NavBarMenuDisplay.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faUser} from "@fortawesome/free-solid-svg-icons";
+
+//backend use
+import { useQuery } from "@apollo/client";
+import { LOAD_CUSTOMER } from "../graphQL/Queries";
 
 function NavBar() {
-  const navigate = useNavigate();
   let [clicked, setClicked] = useState(null);
+  let [query, setQuery] = useState("");
+  let [loggedIn, setLoggedIn] = useState(false);
+  let prohibitedUrl = ["/account","/cart","/loginForm","/userCreate"]
 
-  let menuWidth;
+  const token = localStorage.getItem("thegameislandToken")
 
+  const navigate = useNavigate();
+  let location = window.location.pathname;
+  
+  if(location.split("/").includes("account")) $("#menu-container").show();
+
+  if(location === "/" || prohibitedUrl.includes(location)) location = "";
+
+  const variables = {
+    input: token
+}
+  const { error, loading, data } = useQuery(LOAD_CUSTOMER,{
+    variables: variables,
+    skip: !loggedIn
+  });
+
+  useEffect(() => {
+
+    if(localStorage.getItem('thegameislandCustyInfo')) return;
+
+    if(data) {
+    const customerInfo = data.loginUser
+    console.log(data)
+    localStorage.setItem('thegameislandCustyInfo', JSON.stringify({firstName: customerInfo.firstName , lastName: customerInfo.lastName, email: customerInfo.email,address: customerInfo.address, id: customerInfo.id, orders: customerInfo.orders}))
+      
+    }
+    
+  },[data])
+
+  useEffect(() => {
+    if (token && loggedIn === false) {
+      setLoggedIn(true)
+  }
+  },[])
+
+  function shortenUrl() {
+    return location.split("/").filter((i) => prohibitedUrl.includes(`/${i}`) || i == "/" || i == "" ? "": `/${i}`).map((i) => `/${i}`).join()
+  }
+
+  if(window.location.pathname == shortenUrl() || shortenUrl() == "" && window.location.pathname == "/") $("#menu-container").slideUp()
+
+  let handleSearchInput = (event) => {
+    setQuery(`${event.target.value}`)
+  }
+
+  let handleSearchSubmit = () => {
+    navigate(`/productView/?search=${query}`)
+  }
+
+  const handleKeyPress = (event) => {
+    if(event.key === "Enter") handleSearchSubmit(event);
+    return;
+  }
   return (
     <>
-      <div className="z-[48] h-[155px] w-full backdrop-filter bg-opacity-40 backdrop-blur-lg bg-black fixed top-0 left-0">
+      <div className="z-[48] h-[155px] w-full top-0 left-0">
         <div className="flex items-center justify-between w-full h-full">
-          <img src={thegameisland} className="h-full w-[20%] mt-2 ml-4" />
+          <img src={thegameisland} className="h-full w-[20%] mt-2 ml-4 hover:scale-[1.05] cursor-pointer" onClick={() => {navigate("/");  setClicked(null);}}/>
           <div className="flex w-[35%] mr-4 text-4xl text-white font-Titan-One">
             <div className="flex w-full">
               <input
-                className="mx-2 w-full border-2 rounded-lg border-white bg-transparent font-sans pl-1"
-                placeholder="Search our inventory!!"
+                className="w-full pl-2 mx-2 font-sans bg-transparent border-b-2 border-[#51A451]"
+                placeholder="Search our inventory!"
+                onChange={(e) => handleSearchInput(e)}
+                value={query}
+                onKeyDown={e => handleKeyPress(e)}
+                
               />
               <button
-                className="w-[50px] border-2 rounded-lg border-white text-white text-md bg-transparent p-2 mr-4
-          "
+                className="w-[50px] border-[#51A451] text-white text-md bg-transparent p-2 mr-4"
               >
-                <i className="text-white fa fa-search"></i>
+                <i className="text-white fa fa-search" onClick={() => handleSearchSubmit()}></i>
               </button>
             </div>
           </div>
           <div
             id="mainNavMenu"
-            className="w-[50%] h-full text-white font-Titan-One flex text-4xl items-center"
+            className="w-[50%] h-full text-white font-Titan-One flex text-4xl items-center justify-end"
           >
-            <div
-              className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
-              onClick={() => {
-                if (clicked === "stock") {
-                  navigate("/");
-                  setClicked(null);
-                  $("#menu-container").slideUp(250);
-                  return;
-                } else if ($("#menu-container").is(":hidden")) {
-                  setClicked("stock");
 
-                  navigate("/stock");
-                  $("#menu-container").slideDown(250);
-                  return;
-                } else {
-                  navigate("/stock");
-
-                  setClicked("stock");
-                }
-              }}
-            >
-              Stock
-            </div>
             <div
-              className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
+              className="w-[5%] text-2xl text-center mx-2  hover:border-b-2 hover:border-[#51A451]"
               onClick={() => {
+                if(!loggedIn) {navigate("/loginForm");return;}
                 if (clicked === "account") {
-                  navigate("/");
+                  navigate(`/`)
                   setClicked(null);
-                  $("#menu-container").slideUp(250);
+                  $("#menu-container").hide();
                   return;
                 } else if ($("#menu-container").is(":hidden")) {
                   setClicked("account");
 
-                  navigate("/account");
-                  $("#menu-container").slideDown(250);
+                  navigate(`/account`);
+                  $("#menu-container").show();
                   return;
                 } else {
-                  navigate("/account");
+                  navigate(`/account`);
 
                   setClicked("account");
                 }
               }}
             >
-              Account
+              <FontAwesomeIcon icon={faUser} />
             </div>
             <div
-              className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
+              className="w-[5%] text-2xl text-center mx-2  hover:border-b-2 hover:border-[#51A451]"
               onClick={() => {
-                if (clicked === "recent") {
-                  navigate("/");
-                  setClicked(null);
-                  $("#menu-container").slideUp(250);
-                  return;
-                } else if ($("#menu-container").is(":hidden")) {
-                  setClicked("recent");
-
-                  navigate("/recent");
-                  $("#menu-container").slideDown(250);
-                  return;
-                } else {
-                  navigate("/recent");
-
-                  setClicked("recent");
-                }
-              }}
-            >
-              Recent
-            </div>
-            <div
-              className="w-full text-center mx-2 hover:text-[yellow] hover:border-b-2 hover:border-[yellow]"
-              onClick={() => {
+                if(!loggedIn) {navigate("/loginForm");return;}
                 if (clicked === "cart") {
-                  navigate("/");
+                  navigate(`/`)
                   setClicked(null);
-                  $("#menu-container").slideUp(250);
+                  $("#menu-container").hide();
                   return;
                 } else if ($("#menu-container").is(":hidden")) {
                   setClicked("cart");
 
-                  navigate("/cart");
-                  $("#menu-container").slideDown(250);
+                  navigate(`/cart`);
+                  $("#menu-container").show();
                   return;
                 } else {
-                  navigate("/cart");
+                  navigate(`/cart`);
 
                   setClicked("cart");
                 }
@@ -132,7 +150,7 @@ function NavBar() {
           </div>
         </div>
       </div>
-      <NavBarMenuDisplay />
+      <NavBarMenuDisplay setLoggedIn={setLoggedIn}/>
     </>
   );
 }

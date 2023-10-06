@@ -1,93 +1,146 @@
-import SlimView from "./SlimView";
 
-function ProductDisplay({brand, products,index}) {
-  products = products[index]
+import React, { useEffect, useState } from "react";
+import $ from "jquery";
+import { useNavigate } from "react-router-dom";
 
-  const listProducts = (products) => {
-    return (
-      <ul className="flex flex-wrap h-full mx-2 my-2 overflow-y-scroll">
-        {products.map((product) => {
-          return (
-            <li
-              className="h-[50%] w-[24%] mx-1 my-2 border-2 border-white rounded-lg flex flex-col hover:bg-black hover:bg-opacity-90"
-              id={product.id}
-              onClick={() => {}}
-            >
-              <SlimView image={product.image} name={product.title} price={product.price} />
-            </li>
-          )
-        })}
-      </ul>
-    )
+
+import { Nintendo2, SEGA2, XBOX2, PLAYSTATION2, ATARI2 } from "../content/images/CONSOLESVG"
+import {NES2, SNES2, N642, NSWITCH2, GB2, GAMECUBE2, VIRTUALBOY2, WII2, WIIU2} from "../content/images/NINTENDOSVG.js"
+import { PLAYSTATIONONE, PS22, PS32, PS42, VITA2 } from "../content/images/PLAYSTATIONSVG.js"
+import { OGXBOX2, XBOX3602, XBOXONE2 } from "../content/images/XBOXSVG.js"
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+
+
+import FeaturedProductList from "./FeaturedProductList.js"
+
+
+
+function ProductDisplay({setProductDetail,setProduct}) {
+  const [feat1, setFeat1] = useState({index:1, colName:"featured-nintendo-console", name: "Nintendo", type: "Systems"});
+  const [feat2, setFeat2] = useState({index:1, colName:"featured-nintendo-nes-games", name: "Nintendo Entertainment System", type: "Games"});
+  const [feat3, setFeat3] = useState({index:1, colName:"featured-playstation1-games", name: "Playstation", type: "Games"});
+  const [feat4, setFeat4] = useState({index:1, colName:"featured-xbox-games", name: "Xbox", type: null});
+
+  const navigate = useNavigate();
+  
+
+  
+  function setSpot(num, name, setFeat, setFeatStateVal, featNum, productName) {
+
+    //this will grab 'last' button clicked by default the first button will be hilighted
+    $(`#consoleBtnFeat${featNum}${setFeatStateVal.index}`).removeClass("border-t-black border-b-white bg-white");
+    //than we add the default colors for non selected buttons
+    $(`#consoleBtnFeat${featNum}${setFeatStateVal.index}`).addClass("border-t-stone-800 border-b-black");
+    //than we modify the newly clicked button
+    $(`#consoleBtnFeat${featNum}${num}`).removeClass("border-t-stone-800 border-b-black");
+    //than we add the border colors that represent a clicked button
+    $(`#consoleBtnFeat${featNum}${num}`).addClass("border-t-black border-b-white bg-white");
+
+    setFeat({...setFeatStateVal, colName: name, index: num, name: productName});
+
+
   }
 
 
 
-
   return (
-    <div className="w-full h-full">
-      <div className="flex items-center justify-between">
-        <div className="p-2 ml-8 text-6xl text-white bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg text-bold">
-          {brand}
+   <div className="w-full text-center">
+     <h2 className="pt-10 text-2xl text-white text-bold">Featured Consoles</h2>
+     {/*1st featured list*/}
+     <div className="h-[350px] bg-stone-800 m-4 p-[15px] rounded-xl relative">
+
+      <div className="h-full bg-white rounded-xl">
+        <div className="w-full h-[60px] bg-[#EB5E28] rounded-t flex justify-end relative">
+          <ul className="absolute left-0 -top-[6px] flex h-[72px] max-3xl:w-[750px]">
+            <li className="p-1 border-t-[6px] border-b-[6px] border-t-black border-b-white bg-white overflow-hidden 3xl:w-[180px]" id="consoleBtnFeat11" onClick={() => {setSpot(1,"featured-nintendo-console",setFeat1,feat1,1, "Nintendo")}}><Nintendo2 color={feat1.index == 1 ? "#EB5E28" : ""} opacity={feat1.index == 1 ? "" : ".7"}/></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden 3xl:w-[180px]" id="consoleBtnFeat12" onClick={() => {setSpot(2,"featured-sega-consoles",setFeat1,feat1,1, "Sega")}}><SEGA2 color={feat1.index == 2 ? "#EB5E28" : ""} opacity={feat1.index == 2 ? "" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden 3xl:w-[180px]" id="consoleBtnFeat13" onClick={() => {setSpot(3,"featured-xbox-console",setFeat1,feat1,1, "Xbox")}}><XBOX2 color={feat1.index == 3 ? "#EB5E28" : ""} opacity={feat1.index == 3 ? "" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden 3xl:w-[180px]" id="consoleBtnFeat14" onClick={() => {setSpot(4,"featured-playstation-console",setFeat1,feat1,1, "Playstation")}}><PLAYSTATION2 color={feat1.index == 4 ? "#EB5E28" : ""} opacity={feat1.index == 4 ? "" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden 3xl:w-[180px]" id="consoleBtnFeat15" onClick={() => {setSpot(5,"featured-atari-console",setFeat1,feat1,1, "Atari")}}><ATARI2 color={feat1.index == 5 ? "#EB5E28" : ""} opacity={feat1.index == 5 ? "" : ".7"} /></li>
+
+
+            {/* placehold */}
+          </ul>
+          <button className="scale-[1.15] hover:scale-[1.2] hover:text-yellow-500 flex justify-end items-center relative" onClick={(() => {setProductDetail({name: feat1.name, type: "Systems"}); navigate(`/productView/${feat1.colName}`)})}>
+            <img className="h-full w-[150px] relative" src={require("../content/images/MenuEndTip.png")}/>
+            <p className="absolute mr-4 font-semibold">See More <FontAwesomeIcon icon={faAnglesRight} /></p>
+          </button>
         </div>
+        <FeaturedProductList feat={feat1} setFeat={setFeat1} setProduct={setProduct}/>
       </div>
-      <div className="w-auto h-auto mx-8 mt-6 text-4xl text-white bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg">
-        <ul className="flex flex-wrap justify-evenly">
-          <li className="p-2 px-8 mx-2 my-2 text-center hover:bg-white hover:text-black">
-            Nintendo NES
-          </li>
-          <li className="p-2 px-8 mx-2 my-2 text-center hover:bg-white hover:text-black">
-            Nintendo64
-          </li>
-          <li className="p-2 px-8 mx-2 my-2 text-center hover:bg-white hover:text-black">
-            Super Nintendo
-          </li>
-          <li className="p-2 px-8 mx-2 my-2 text-center hover:bg-white hover:text-black">
-            Nintendo Switch
-          </li>
-          <li className="p-2 px-8 mx-2 my-2 text-center hover:bg-white hover:text-black">
-            Gameboy
-          </li>
-          <li className="p-2 px-8 mx-2 my-2 text-center hover:bg-white hover:text-black">
-            Gameboy Color
-          </li>
-          <li className="p-2 px-8 mx-2 my-2 text-center hover:bg-white hover:text-black">
-            Gameboy Advance GBA
-          </li>
-          <li className="p-2 px-8 mx-2 my-2 text-center hover:bg-white hover:text-black">
-            Gamecube
-          </li>
-          <li className="p-2 px-8 mx-2 my-2 text-center hover:bg-white hover:text-black">
-            WII
-          </li>
-          <li className="p-2 px-8 mx-2 my-2 text-center hover:bg-white hover:text-black">
-            WII U
-          </li>
-          <li className="p-2 px-8 mx-2 my-2 text-center hover:bg-white hover:text-black">
-            Virtual Boy
-          </li>
-        </ul>
-      </div>
-      <div className="flex h-screen mx-8 mt-2 mt-6 bg-black rounded-lg backdrop-filter bg-opacity-70 backdrop-blue-lg">
-        <div className="flex flex-col w-full h-full">
-          <div className="flex items-center justify-between border-2 border-white rounded-lg h-14">
-            <div className="ml-12 text-4xl text-white text-bold">{brand}</div>
-            <div className="mr-6 text-4xl text-white text-bold">
-              <button className="w-auto px-8 mx-3 hover:bg-white hover:text-black">
-                Games (330)
-              </button>
-              <button className="w-auto px-8 mx-3 hover:bg-white hover:text-black">
-                Assesories (291)
-              </button>
-              <button className="w-auto px-8 mx-3 hover:bg-white hover:text-black">
-                Systems (22)
-              </button>
-            </div>
-          </div>
-          {products && listProducts(products)}
+     </div>
+     <h2 className="pt-10 text-2xl text-white text-bold">Featured Games</h2>
+     {/*2nd featured list*/}
+     <div className="h-[350px] bg-stone-800 m-4 p-[15px] rounded-xl relative">
+      <div className="h-full bg-white rounded-xl">
+        <div className="w-full h-[60px] bg-[#E4000F] rounded-t flex justify-end relative">
+          <ul className="absolute left-0 -top-[6px] flex h-[72px]">
+            <li className="p-1 border-t-[6px] border-b-[6px] border-t-black border-b-white bg-white overflow-hidden" id="consoleBtnFeat21" onClick={() => {setSpot(1,"featured-nintendo-nes-games",setFeat2,feat2,2,"NES")}}><NES2 color={feat2.index == 1 ? "#E4000F" : ""} opacity={feat2.index == 1 ? "" : ".7"}/></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat22" onClick={() => {setSpot(2,"featured-nintendo-snes-games",setFeat2,feat2,2,"SNES")}}><SNES2 color={feat2.index == 2 ? "#E4000F" : ""} opacity={feat2.index == 2 ? "" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat23" onClick={() => {setSpot(3,"featured-nintendo-n64-games",setFeat2,feat2,2,"Nintendo 64")}}><N642 color={feat2.index == 3 ? "#E4000F" : ""} opacity={feat2.index == 3 ? "" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat24" onClick={() => {setSpot(4,"featured-nintendo-switch-games",setFeat2,feat2,2,"Nintendo Switch")}}><NSWITCH2 color={feat2.index == 4 ? "#E4000F" : ""} opacity={feat2.index == 4 ? "" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat25" onClick={() => {setSpot(5,"featured-nintendo-gameboy-games",setFeat2,feat2,2,"Gameboy")}}><GB2 color={feat2.index == 5 ? "#E4000F" : ""} opacity={feat2.index == 5 ? "" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat26" onClick={() => {setSpot(6,"featured-nintendo-gamecube-games",setFeat2,feat2,2,"Gamecube")}}><GAMECUBE2 color={feat2.index == 6 ? "#E4000F" : ""} opacity={feat2.index == 6 ? "" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat27" onClick={() => {setSpot(7,"featured-nintendo-virtualb-games",setFeat2,feat2,2,"Virtual Boy")}}><VIRTUALBOY2 color={feat2.index == 7 ? "#E4000F" : ""} opacity={feat2.index == 7 ? "" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat28" onClick={() => {setSpot(8,"featured-nintendo-wii-games",setFeat2,feat2,2,"Wii")}}><WII2 color={feat2.index == 8 ? "#E4000F" : ""} opacity={feat2.index == 8 ? "" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat29" onClick={() => {setSpot(9,"featured-nintendo-wiiu-games",setFeat2,feat2,2,"Wii U")}}><WIIU2 color={feat2.index == 9 ? "#E4000F" : ""} opacity={feat2.index == 9 ? "" : ".7"} /></li>
+
+
+
+
+            {/* placehold */}
+          </ul>
+          <button className="scale-[1.15] hover:scale-[1.2] hover:text-yellow-500 flex justify-end items-center relative" onClick={(() => {setProductDetail({name: feat2.name, type: "Games"}); navigate(`/productView/${feat2.colName}`)})}>
+            <img className="h-full w-[150px] relative" src={require("../content/images/MenuEndTip.png")}/>
+            <p className="absolute mr-4 font-semibold">See More <FontAwesomeIcon icon={faAnglesRight} /></p>
+          </button>
         </div>
+        <FeaturedProductList feat={feat2} setFeat={setFeat2} setProduct={setProduct} />
       </div>
-    </div>
+     </div>
+     {/*3rd featured list*/}
+     <div className="h-[350px] bg-stone-800 m-4 p-[15px] rounded-xl relative">
+      <div className="h-[100%] rounded-xl bg-white">
+        <div className="w-full h-[60px] bg-[#006FCD] rounded-t flex justify-end relative">
+          <ul className="absolute left-0 -top-[6px] flex h-[72px] max-3xl:w-[750px]">
+            <li className="p-1 border-t-[6px] border-b-[6px] border-t-black border-b-white bg-white overflow-hidden" id="consoleBtnFeat31" onClick={() => {setSpot(1,"featured-playstation1-games",setFeat3,feat3,3,"Playstation")}}><PLAYSTATIONONE color={feat3.index == 1 ? "#006FCD" : ""} opacity={feat3.index == 1 ? "1" : ".7"}/></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat32" onClick={() => {setSpot(2,"featured-playstation2-games",setFeat3,feat3,3,"Playstation 2")}}><PS22 color={feat3.index == 2 ? "#006FCD" : ""} opacity={feat3.index == 2 ? "1" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat33" onClick={() => {setSpot(3,"featured-playstation3-games",setFeat3,feat3,3,"Playstation 3")}}><PS32 color={feat3.index == 3 ? "#006FCD" : ""} opacity={feat3.index == 3 ? "1" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat34" onClick={() => {setSpot(4,"featured-playstation4-games",setFeat3,feat3,3,"Playstation 4")}}><PS42 color={feat3.index == 4 ? "#006FCD" : ""} opacity={feat3.index == 4 ? "1" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat35" onClick={() => {setSpot(5,"featured-vita-games",setFeat3,feat3,3,"Playstation Vita")}}><VITA2 color={feat3.index == 5 ? "#006FCD" : ""} opacity={feat3.index == 5 ? "1" : ".7"} /></li>
+
+
+            {/* placehold */}
+          </ul>
+          <button className="scale-[1.15] hover:scale-[1.2] hover:text-yellow-500 flex justify-end items-center relative"  onClick={(() => {setProductDetail({name: feat3.name, type: "Games"}); navigate(`/productView/${feat3.colName}`)})}>
+            <img className="h-full w-[150px] relative" src={require("../content/images/MenuEndTip.png")}/>
+            <p className="absolute mr-4 font-semibold">See More <FontAwesomeIcon icon={faAnglesRight} /></p>
+          </button>
+        </div>
+        <FeaturedProductList feat={feat3} setFeat={setFeat3} setProduct={setProduct} />
+      </div>
+     </div>
+     {/*4th featured list*/}
+     <div className="h-[350px] bg-stone-800 m-4 p-[15px] rounded-xl relative">
+      <div className="h-[100%] rounded-xl bg-white">
+        <div className="w-full h-[60px] bg-[#0e7a0d] rounded-t flex justify-end relative">
+          <ul className="absolute left-0 -top-[6px] flex h-[72px]">
+            <li className="p-1 border-t-[6px] border-b-[6px] border-t-black border-b-white bg-white overflow-hidden" id="consoleBtnFeat41" onClick={() => {setSpot(1,"featured-xbox-games",setFeat4,feat4,4, "Xbox")}}><OGXBOX2 color={feat4.index == 1 ? "#0e7a0d" : ""} opacity={feat4.index == 1 ? "1" : ".7"}/></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat42" onClick={() => {setSpot(2,"featured-xbox360-games",setFeat4,feat4,4, "Xbox 360")}}><XBOX3602 color={feat4.index == 2 ? "#0e7a0d" : ""} opacity={feat4.index == 1 ? "1" : ".7"} /></li>
+            <li className="p-1 border-t-[6px] border-b-[6px] border-b-black border-t-stone-800 overflow-hidden" id="consoleBtnFeat43" onClick={() => {setSpot(3,"featured-xboxone-games",setFeat4,feat4,4, "Xbox one")}}><XBOXONE2 color={feat4.index == 3 ? "#0e7a0d" : ""} opacity={feat4.index == 1 ? "1" : ".7"} /></li>
+            {/* placehold */}
+          </ul>
+          <button className="scale-[1.15] hover:scale-[1.2] hover:text-yellow-500 flex justify-end items-center relative"  onClick={(() => {setProductDetail({name: feat4.name, type: "Games"}); navigate(`/productView/${feat4.colName}`)})}>
+            <img className="h-full w-[150px] relative" src={require("../content/images/MenuEndTip.png")}/>
+            <p className="absolute mr-4 font-semibold">See More <FontAwesomeIcon icon={faAnglesRight} /></p>
+          </button>
+        </div>
+        <FeaturedProductList feat={feat4} setFeat={setFeat4} setProduct={setProduct} />
+      </div>
+     </div>
+   </div>
   );
 }
 

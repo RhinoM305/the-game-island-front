@@ -1,18 +1,20 @@
+import * as React from 'react';
 import { Routes, Route } from "react-router-dom";
+const { Account, Cart } = require("./menu-option.js");
 
-const { Stock, Account, Recent, Cart } = require("./menu-option.js");
+function NavBarMenuDisplay({setLoggedIn}) {
+  let location = window.location.pathname;
+  let prohibitedUrl = ["/account","/cart","/recent","/overview"]
 
-function NavBarMenuDisplay() {
+  if(location === "/" || prohibitedUrl.includes(location)) location = "";
   return (
     <div
-      className="fixed top-[154px] w-full h-1/2 z-[49] bg-black hidden"
+      className="absolute top-[154px] w-full z-[49] bg-black hidden p-4 h-3/4"
       id="menu-container"
     >
       <Routes>
-        <Route path="/stock" element={<Stock />} />
-        <Route path="/account/*" element={<Account />} />
-        <Route path="/recent" element={<Recent />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path={`/account/*`} element={<Account setLoggedIn={setLoggedIn} />} />
+        <Route path={`/cart`} element={<Cart />} />
       </Routes>
     </div>
   );

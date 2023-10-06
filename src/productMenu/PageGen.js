@@ -13,7 +13,6 @@ function PageGen({pageInfo,setPagination,pagination,setProducts,index,setIndex,l
     const [pages, setPages] = useState([]);
     const numOfPages = Math.ceil(numberOfProducts / 20);
 
-    console.log(pageMultiplier);
     useEffect(() => {
         let p = []
         for(let i = 1; i <= length; i++) {
@@ -70,7 +69,6 @@ function PageGen({pageInfo,setPagination,pagination,setProducts,index,setIndex,l
     const handleClick = (pageID) => {
         //Find any pages with the activePage css class;
         var activePage = $('div.activePage').attr('id');
-        console.log(activePage);
         //Toggle css activePage
         $(`#${activePage}`).toggleClass('activePage')
         //Toggle new div with the activePage css class;

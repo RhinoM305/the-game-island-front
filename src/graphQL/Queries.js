@@ -1,18 +1,18 @@
 import { gql } from "@apollo/client";
 
 export const LOAD_PRODUCTS = gql`
-query Products($first: Int, $after: String, $before: String, $last: Int,  $Query: QueryInput, $pageNum: Int, $reverse: Boolean){
-  getProducts(first: $first, after: $after, before: $before, last: $last, Query: $Query, pageNum: $pageNum, reverse: $reverse){
+query Products($first: Int, $after: String, $before: String, $last: Int,  $Query: QueryInput, $reverse: Boolean){
+  getProducts(first: $first, after: $after, before: $before, last: $last, Query: $Query, reverse: $reverse){
     products {
+      id
       title
       description
       vendor
       price
-      image
+      images
       
     }
     pageInfo {
-      numberOfProducts
       hasNextPage
       hasPreviousPage
       startCursor
@@ -21,5 +21,82 @@ query Products($first: Int, $after: String, $before: String, $last: Int,  $Query
   }
 }
 `;
+
+export const LOAD_COLLECTIONBYHANDLE = gql`
+  query getCollectionByHandle($handle: String, $after: String, $before: String, $first: Int, $last: Int, $sortKey: String, $reverse: Boolean) {
+    getCollectionByHandle(handle:$handle, after:$after, before:$before, first:$first, last:$last, sortKey:$sortKey, reverse:$reverse){
+      id
+      title
+      productsCount
+      products {
+        id
+        title
+        console
+        images
+        vendor
+        price
+        description
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+  }
+}
+`;
+
+export const LOAD_CUSTOMER = gql`
+query loginUser($input: String!) {
+  loginUser(input: $input) {
+    id
+    email
+    firstName
+    lastName
+    address {
+      address1
+      address2
+      city
+      country
+      firstName
+      lastName
+      phone
+      province
+      zip
+      id
+     }
+     orders {
+      billingAddress {
+            address1
+            address2
+            city
+            country
+            firstName
+            lastName
+            phone
+            province
+            zip
+            id
+      }
+      currentSubtotalPrice
+      currentTotalPrice
+      currentTotalTax
+      edited
+      financialStatus
+      fulfillmentStatus
+      orderNumber
+      name
+      processedAt
+      totalShippingPrice
+      lineItems {
+        currentQuantity
+        originalTotalPrice
+        title
+      }
+    }
+  }
+}
+`
 
 
