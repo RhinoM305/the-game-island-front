@@ -10,7 +10,7 @@ import { PLAYSTATIONONE, PS22, PS32, PS42, VITA2 } from "../content/images/PLAYS
 import { OGXBOX2, XBOX3602, XBOXONE2 } from "../content/images/XBOXSVG.js"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+import { faAnglesRight, faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 
 
 import FeaturedProductList from "./FeaturedProductList.js"
@@ -65,7 +65,7 @@ function ProductDisplay({setProductDetail,setProduct}) {
           </ul>
           <button className="scale-[1.15] hover:scale-[1.2] hover:text-yellow-500 flex justify-end items-center relative" onClick={(() => {setProductDetail({name: feat1.name, type: "Systems"}); navigate(`/productView/${feat1.colName}`)})}>
             <img className="h-full w-[150px] relative" src={require("../content/images/MenuEndTip.png")}/>
-            <p className="absolute mr-4 font-semibold">See More <FontAwesomeIcon icon={faAnglesRight} /></p>
+            <p className="absolute mr-4 font-semibold font-Rubik"><FontAwesomeIcon icon={faLocationArrow} /> See More</p>
           </button>
         </div>
         <FeaturedProductList feat={feat1} setFeat={setFeat1} setProduct={setProduct}/>
@@ -94,7 +94,7 @@ function ProductDisplay({setProductDetail,setProduct}) {
           </ul>
           <button className="scale-[1.15] hover:scale-[1.2] hover:text-yellow-500 flex justify-end items-center relative" onClick={(() => {setProductDetail({name: feat2.name, type: "Games"}); navigate(`/productView/${feat2.colName}`)})}>
             <img className="h-full w-[150px] relative" src={require("../content/images/MenuEndTip.png")}/>
-            <p className="absolute mr-4 font-semibold">See More <FontAwesomeIcon icon={faAnglesRight} /></p>
+            <p className="absolute mr-4 font-semibold font-Rubik"><FontAwesomeIcon icon={faLocationArrow} /> See More</p>
           </button>
         </div>
         <FeaturedProductList feat={feat2} setFeat={setFeat2} setProduct={setProduct} />
@@ -116,7 +116,7 @@ function ProductDisplay({setProductDetail,setProduct}) {
           </ul>
           <button className="scale-[1.15] hover:scale-[1.2] hover:text-yellow-500 flex justify-end items-center relative"  onClick={(() => {setProductDetail({name: feat3.name, type: "Games"}); navigate(`/productView/${feat3.colName}`)})}>
             <img className="h-full w-[150px] relative" src={require("../content/images/MenuEndTip.png")}/>
-            <p className="absolute mr-4 font-semibold">See More <FontAwesomeIcon icon={faAnglesRight} /></p>
+            <p className="absolute mr-4 font-semibold font-Rubik"><FontAwesomeIcon icon={faLocationArrow} /> See More</p>
           </button>
         </div>
         <FeaturedProductList feat={feat3} setFeat={setFeat3} setProduct={setProduct} />
@@ -134,7 +134,7 @@ function ProductDisplay({setProductDetail,setProduct}) {
           </ul>
           <button className="scale-[1.15] hover:scale-[1.2] hover:text-yellow-500 flex justify-end items-center relative"  onClick={(() => {setProductDetail({name: feat4.name, type: "Games"}); navigate(`/productView/${feat4.colName}`)})}>
             <img className="h-full w-[150px] relative" src={require("../content/images/MenuEndTip.png")}/>
-            <p className="absolute mr-4 font-semibold">See More <FontAwesomeIcon icon={faAnglesRight} /></p>
+            <p className="absolute mr-4 font-semibold font-Rubik"><FontAwesomeIcon icon={faLocationArrow} /> See More</p>
           </button>
         </div>
         <FeaturedProductList feat={feat4} setFeat={setFeat4} setProduct={setProduct} />

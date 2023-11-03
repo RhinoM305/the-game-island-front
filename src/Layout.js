@@ -7,6 +7,10 @@ import LoginForm from "./login/LoginForm.js"
 import { Routes, Route } from "react-router-dom";
 
 
+import { useQuery } from "@apollo/client";
+import { LOAD_PRODUCT } from "./graphQL/Queries.js";
+
+
 function Layout() {
   let [productDetail, setProductDetail] = useState({name: null, type: null})
   let [product, setProduct] = useState({});

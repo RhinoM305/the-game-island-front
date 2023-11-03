@@ -29,8 +29,9 @@ function LoginFrom() {
         const token = tokenContent.data.getCustomerToken.loggedUser.accessToken;
         
         localStorage.setItem('thegameislandToken', token);
-
-
+        console.log(localStorage.getItem('thegameislandCart'))
+        if(localStorage.getItem('thegameislandCart') === null) localStorage.setItem('thegameislandCart', JSON.stringify([])); 
+        localStorage.setItem('thegameislandHasLoggedIn', true);
           navigate("/")
     
     }
@@ -50,14 +51,17 @@ function LoginFrom() {
     
     const login = (
         <div className="flex flex-col items-center justify-center w-full h-3/4">
-            <form className="flex flex-col p-8 text-white border-2 border-white" onSubmit={(e) => handleSubmit(e)}>
-                <h3 className="mb-2 text-xl font-bold border-b-2 w-max">Login</h3>
+            <form className="flex flex-col p-8 text-white border-2 border-[#51A451] w-1/5" onSubmit={(e) => handleSubmit(e)}>
+                    <div className="flex mb-4 items-end">
+                        <h3 className="text-[27px] font-bold border-b-2 border-[#51A451] w-max">Login</h3>
+                        {localStorage.getItem('thegameislandHasLoggedIn') == "true" ? <p className='text-[27px] ml-1'>, welcome back!</p> : ""}
+                    </div>
                 <p>Email:</p>
                 <input className="w-full text-black" type="text" name="email" onChange={(e) => setLoginForm({...loginForm,email:e.target.value})} required={true}/>
-                <p>Password:</p>
+                <p className="mt-2">Password:</p>
                 <input className="w-full text-black" type="password" name="password" onChange={(e) => setLoginForm({...loginForm,password:e.target.value})} required={true}/>
                 <button className="w-full p-1 mt-4 mb-1 border-2 border-white" type="submit">Login</button>
-                <p className="flex text-sm">Don't have an account? <Link to={"/loginForm/userCreate"}><p className=" ml-2 hover:scale-[1.1]">Sign up</p></Link></p>
+                <p className="flex text-sm justify-center">Don't have an account? <Link to={"/loginForm/userCreate"}><p className=" ml-2 hover:scale-[1.1] text-[#51A451]">Sign up</p></Link></p>
             </form>
             {errorMsg && <p className="mt-3 text-red-500 text-md">{errorMsg}</p>}
         </div>)

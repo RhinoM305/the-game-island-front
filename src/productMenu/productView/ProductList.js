@@ -71,16 +71,15 @@ function ProductList({setProduct}) {
             setNumberPerPage(40)
        }
     }
-    // console.log(pageInfo)
 
     function renderProducts(products) {
         products = products.getCollectionByHandle.products;
-
+ 
         return products.map(product => {
             return (
-                <li className="w-1/5 p-2 h-[350px] hover:scale-[1.02] hover:opacity-[.8]" onClick={() => {navigate(`/productView/${handle}/${product.id}`); setProduct(product)}}>
+                <li className="w-1/5 p-2 h-[350px] hover:scale-[1.02] hover:opacity-[.8]" onClick={() => {navigate(`/productView/${handle}/${product.productId}`); setProduct(product)}}>
                 <div className="w-full h-full overflow-hidden rounded-lg">
-                    <img src={product.images[0]} className="bg-white h-[60%] w-full"/>
+                    <img src={product.images[0]} className="bg-white h-[60%] w-full px-4"/>
                     <div className="h-[32%] bg-orange-500 text-center p-1">
                         {product.title}
                     </div>

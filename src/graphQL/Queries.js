@@ -22,6 +22,22 @@ query Products($first: Int, $after: String, $before: String, $last: Int,  $Query
 }
 `;
 
+export const LOAD_PRODUCT  = gql`
+query getProduct($id: String!) {
+  getProduct(id: $id) {
+    id
+    productId
+    description
+    title
+    tags
+    vendor
+    console
+    images
+    price
+  }
+}
+`
+
 export const LOAD_COLLECTIONBYHANDLE = gql`
   query getCollectionByHandle($handle: String, $after: String, $before: String, $first: Int, $last: Int, $sortKey: String, $reverse: Boolean) {
     getCollectionByHandle(handle:$handle, after:$after, before:$before, first:$first, last:$last, sortKey:$sortKey, reverse:$reverse){
@@ -30,6 +46,7 @@ export const LOAD_COLLECTIONBYHANDLE = gql`
       productsCount
       products {
         id
+        productId
         title
         console
         images
@@ -58,6 +75,7 @@ query loginUser($input: String!) {
       address1
       address2
       city
+      company
       country
       firstName
       lastName
@@ -65,19 +83,20 @@ query loginUser($input: String!) {
       province
       zip
       id
-     }
-     orders {
+    }
+    orders {
       billingAddress {
-            address1
-            address2
-            city
-            country
-            firstName
-            lastName
-            phone
-            province
-            zip
-            id
+        address1
+        address2
+        city
+        company
+        country
+        firstName
+        lastName
+        phone
+        province
+        zip
+        id
       }
       currentSubtotalPrice
       currentTotalPrice

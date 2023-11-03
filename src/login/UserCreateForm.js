@@ -80,8 +80,8 @@ function UserCreateForm() {
 
     return (
         <div className="w-full h-[80%] flex justify-center items-center flex-col">
-            <form className="p-4 px-12 text-lg text-white border-2 border-white" onSubmit={(e) => handleSubmit(e)}>
-                <h3 className="my-2 text-xl font-bold border-b-2 w-max">CREATE ACCOUNT</h3>
+            <form className="p-4 px-12 text-lg text-white border-2 border-[#51A451]" onSubmit={(e) => handleSubmit(e)}>
+                <h3 className="my-2 text-xl font-bold border-b-2 border-[#51A451] w-max">CREATE ACCOUNT</h3>
                 <p>First Name</p>
                 <input className="w-full pl-1 text-black" type="text" name="firstName" minLength={1} required={true} value={createForm.firstName} placeholder="first name" onChange={(e)=>setCreateForm({...createForm,firstName:e.target.value})} onKeyDown={e => handleKeyPress(e)}/>
                 <p>Last Name</p>
@@ -90,7 +90,7 @@ function UserCreateForm() {
                 <input className="w-full pl-1 text-black" type="text" name="email" value={createForm.email} placeholder="example@domain.com" onChange={(e) => setCreateForm({...createForm, email:e.target.value})} required={true} onKeyDown={e => handleKeyPress(e)}/>
                 <p>Password</p>
                 <input className="w-full pl-1 text-black" type="text" name="password" value={createForm.password} placeholder="password" onChange={(e) => setCreateForm({...createForm, password:e.target.value})} onKeyDown={e => handleKeyPress(e)}/>
-                <button className="w-full p-1 mt-4 mb-1 border-2 border-white" type="submit">Create Account</button>
+                <button className="w-full p-1 mt-4 mb-1 border-2 border-[#51A451]" type="submit">Create Account</button>
             </form>
             {errorMsg && <p className="mt-3 text-red-500 text-md">{errorMsg}.</p>}
         </div>

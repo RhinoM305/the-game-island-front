@@ -44,7 +44,6 @@ export function Overview() {
 
 
     if(address1 === undefined || address1 === null) {
-      console.log("ran")
       const createAddressResponse = await createAddress().catch((err) => console.log("error happended:",err));
       console.log(createAddressResponse)
       let updatedAddress = createAddressResponse.data.createCustomerAddress.customerAddress
@@ -86,32 +85,58 @@ export function Overview() {
 
 
   // if(address1 === null)
-  return <form className="flex flex-col w-1/4 text-white" onSubmit={(e) => handleSubmit(e)}>
+  return <form className="flex flex-col text-white w-max overflow-hidden" onSubmit={(e) => handleSubmit(e)}>
     <h2 className="text-xl font-bold">Account Details</h2>
     <p className="ml-2 text-sm">First name: {firstName}</p>
     <p className="ml-2 text-sm">Last name: {lastName}</p>
     <p className="ml-2 text-sm">Email: {email}</p>
     <h2 className="text-xl font-bold">Shipping Address</h2>
-    <p className="ml-2 text-sm">Address 1:</p>
-    <input className="pl-1 ml-2 text-black addyInput" placeholder="address1" value={addressForm.address1} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, address1: e.target.value})} required/>
-    <p className="ml-2 text-sm">Address 2:</p>
-    <input className="pl-1 ml-2 text-black addyInput" placeholder="address2" value={addressForm.address2 === undefined ? addressForm.address2 : ""} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, address2: e.target.value})}/>
-    <p className="ml-2 text-sm">City:</p>
-    <input className="pl-1 ml-2 text-black addyInput" placeholder="city" value={addressForm.city} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, city:e.target.value})} required/>
-    <p className="ml-2 text-sm">Country:</p>
-    <input className="pl-1 ml-2 text-black addyInput" placeholder="country" value={addressForm.country} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, country:e.target.value})} required/>
-    <p className="ml-2 text-sm">First name:</p>
-    <input className="pl-1 ml-2 text-black addyInput" placeholder="first name" value={addressForm.firstName} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, firstName:e.target.value})} required/>
-    <p className="ml-2 text-sm">Last name:</p>
-    <input className="pl-1 ml-2 text-black addyInput" placeholder="last name" value={addressForm.lastName} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, lastName:e.target.value})} required/>
-    <p className="ml-2 text-sm">Phone:</p>
-    <input className="pl-1 ml-2 text-black addyInput" placeholder="phone" value={addressForm.phone} type="number" maxLength={11} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, phone:e.target.value})} required/>
-    <p className="ml-2 text-sm">State:</p>
-    <input className="pl-1 ml-2 text-black addyInput" placeholder="province" value={addressForm.province} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, province:e.target.value})} required/>
-    <p className="ml-2 text-sm">Zipcode:</p>
-    <input className="pl-1 ml-2 text-black addyInput" placeholder="zipcode" value={addressForm.zipcode} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, zipcode:e.target.value})} required/>
-    <button className="mt-2 ml-2 bg-red-500 addyInput" type="submit" disabled={disabled}>Save Address</button>
-    <p className="my-1 ml-2 text-center bg-red-500 cursor-pointer" onClick={()=>{setDisabled(false)}}>Edit Address</p>
+    <div>
+    <div className="flex">
+        <div>
+            <p className="ml-2 text-sm">First name:</p>
+            <input className="pl-1 ml-2 text-black addyInput" placeholder="first name" value={addressForm.firstName} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, firstName:e.target.value})} required/>
+        </div>
+        <div>
+            <p className="ml-2 text-sm">Last name:</p>
+            <input className="pl-1 ml-2 text-black addyInput" placeholder="last name" value={addressForm.lastName} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, lastName:e.target.value})} required/>
+        </div>
+    </div>
+    <div className="">
+      <div>
+          <p className="ml-2 text-sm">Address 1:</p>
+          <input className="pl-1 ml-2 text-black addyInput w-full" placeholder="address1" value={addressForm.address1} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, address1: e.target.value})} required/>
+      </div>
+      <div>
+          <p className="ml-2 text-sm">Address 2:</p>
+          <input className="pl-1 ml-2 text-black addyInput w-full" placeholder="address2" value={addressForm.address2 === null ? '' : ""} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, address2: e.target.value})}/>
+      </div>
+    </div>
+    <div className="flex">
+        <div>
+            <p className="ml-2 text-sm">City:</p>
+            <input className="pl-1 ml-2 text-black addyInput" placeholder="city" value={addressForm.city} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, city:e.target.value})} required/>
+        </div>
+        <div>
+            <p className="ml-2 text-sm">Country:</p>
+            <input className="pl-1 ml-2 text-black addyInput" placeholder="country" value={addressForm.country} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, country:e.target.value})} required/>
+        </div>
+        </div>
+    <div className="flex">
+        <div>
+            <p className="ml-2 text-sm">State:</p>
+            <input className="pl-1 ml-2 text-black addyInput" placeholder="province" value={addressForm.province} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, province:e.target.value})} required/>
+        </div>
+        <div>
+            <p className="ml-2 text-sm">Zipcode:</p>
+            <input className="pl-1 ml-2 text-black addyInput" placeholder="zipcode" value={addressForm.zipcode} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, zipcode:e.target.value})} required/>
+        </div>
+    </div>
+      <p className="ml-2 text-sm">Phone:</p>
+      <input className="pl-1 ml-2 text-black addyInput" placeholder="phone" value={addressForm.phone} type="number" maxLength={11} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, phone:e.target.value})} required/>
+    </div>
+    <button className="mt-2 ml-2 addyInput bg-[#51A451]" style={{opacity:disabled ? .50 :  1}} type="submit" disabled={disabled}>Save Address</button>
+    <p className="my-1 ml-2 text-center cursor-pointer bg-[#51A451]" onClick={()=>{setDisabled(false)}}>Edit Address</p>
 
   </form>;
 }
@@ -142,7 +167,6 @@ export function Orders() {
     )
   })
   return <div className="w-full text-white">
-    {orders.length == 0 && <div className="m-2 text-xl font-bold text-center text-black rounded-lg bg-lime-500">You have not placed a order yet :(</div>}
     <table className="w-full h-full text-center table-auto">
       <thead className="w-full border-b-2 border-white">
         <tr>
@@ -158,6 +182,8 @@ export function Orders() {
       {organizedOrders}
       </tbody>
     </table>
+    {orders.length == 0 && <div className="text-black bg-lime-300 mt-2 py-3 border-l-[10px] border-lime-700 pl-2 text-2xl rounded-md">You have not placed a order yet :(</div>}
+
   </div>;
 }
 

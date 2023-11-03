@@ -6,8 +6,6 @@ import ShowProduct from "./ShowProduct.js"
 import { Routes, Route } from "react-router-dom";
 
 
-
-
 function ProductView({productDetail, setProductDetail,setProduct,product}) {
 
     return (
@@ -22,7 +20,7 @@ function ProductView({productDetail, setProductDetail,setProduct,product}) {
                   <h2 className="w-full py-4 pl-4 text-3xl text-left text-white">{productDetail.name} - {productDetail.type}</h2>
                   <ProductList setProduct={setProduct}/>
                 </>}/>
-               <Route path="/:id/*" element={<ShowProduct product={product}/>}/>
+               <Route path="/:id/*" element={<ShowProduct product={product} setProduct={setProduct}/>}/>
             </Routes>
             </div>
         </div>

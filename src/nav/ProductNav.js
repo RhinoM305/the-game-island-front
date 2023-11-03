@@ -22,7 +22,7 @@ function ProductNav({setProductDetail}) {
       }
       
     return (
-        <ul className="flex w-full h-full text-xl font-bold text-white">
+        <ul className="flex w-full h-full text-xl font-bold text-white font-Rubik">
         <li className="w-full text-center bg-[#51A451] relative" id="NintendoButton" onMouseEnter={() => {$("#NintendoMenu").show()}} onMouseLeave={() => $("#NintendoMenu").hide()}>
           <div>Nintendo <FontAwesomeIcon icon={faCaretDown} /></div>
           <ul className="absolute hidden w-full bg-[#484848] z-[10]" id="NintendoMenu">

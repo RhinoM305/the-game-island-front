@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleLeft, faCircleRight } from "@fortawesome/free-solid-svg-icons";
+import { faCircleLeft, faCircleRight, faCaretRight, faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { useParams, useNavigate } from "react-router-dom";
 
 //backend use
@@ -64,8 +64,8 @@ function FeaturedProductList ({feat,setFeat, setProduct}) {
         }
         return products.map(product => {    
             return (
-                <div className="z-10 w-1/6 h-full border-2 hover:scale-[1.02] hover:opacity-[.8]" onClick={() => {navigate(`/productView/${feat.colName}/${product.id}`); setProduct(product)}}>
-                <img src={product.images[0]} className="w-full h-[60%]"/>
+                <div className="z-10 w-1/6 h-full border-2 hover:scale-[1.02] hover:opacity-[.8]" onClick={() => {navigate(`/productView/${feat.colName}/${product.productId}`); setProduct(product)}}>
+                <img src={product.images[0]} className="w-full h-[60%] px-4"/>
                 <div className="w-full h-[40%] bg-orange-500">
                     <div className="w-full h-[85%] p-1">{product.title}</div>
                     <div className="w-full h-[15%] pr-2 bg-stone-700 text-white text-right ">
@@ -82,11 +82,11 @@ function FeaturedProductList ({feat,setFeat, setProduct}) {
     return (
        <>
         <div className="w-full h-[75%] p-2 text-xs">
-     <div className="z-[20] absolute invisible h-[75%] w-[150px] left-0 flex justify-start items-center ml-4 bg-red-500">
-     {data && <FontAwesomeIcon className="visible scale-[1.4] hover:scale-[1.7]" icon={faCircleLeft} size="2xl" onClick={() => handleLeftClick(data.getCollectionByHandle.pageInfo)}/>}
+     <div className="z-[40] absolute invisible h-[75%] w-[150px] -left-9 flex justify-start items-center ml-4 bg-red-500">
+     {data && <FontAwesomeIcon className="visible scale-[2.2] hover:scale-[2.4] text-[#51A451]" icon={faCaretLeft} size="2xl" onClick={() => handleLeftClick(data.getCollectionByHandle.pageInfo)}/>}
      </div>
-     <div className="z-[20] absolute invisible h-[75%] w-[150px] right-0 flex justify-end items-center mr-4 bg-red-500">
-     {data && <FontAwesomeIcon className="visible scale-[1.4] hover:scale-[1.7]" icon={faCircleRight} size="2xl" onClick={() => handleRightClick(data.getCollectionByHandle.pageInfo)}/>}
+     <div className="z-[40] absolute invisible h-[75%] w-[150px] -right-9 flex justify-end items-center mr-4 bg-red-500">
+     {data && <FontAwesomeIcon className="visible scale-[2.2] hover:scale-[2.4] text-[#51A451]" icon={faCaretRight} size="2xl" onClick={() => handleRightClick(data.getCollectionByHandle.pageInfo)}/>}
      </div>
           <div className="flex w-full h-full">
             {data && renderProducts(data)}

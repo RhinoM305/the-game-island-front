@@ -81,3 +81,16 @@ mutation updateCustomerAddress($address: CustomerAddressCreateInput!, $customerA
     }
   }
 }`
+
+export const CREATE_CUSTOMER_CART = gql `
+mutation createCustomerCart($buyerIdentity: buyerIdentityInput, $lines: [cartLineInput], $note: String) {
+  createCustomerCart(buyerIdentity: $buyerIdentity, lines: $lines, note: $note) {
+    userErrors {
+      code
+      field
+      message
+    }
+    checkoutUrl
+  }
+}
+`

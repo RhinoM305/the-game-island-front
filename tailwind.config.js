@@ -5,7 +5,9 @@ module.exports = {
     extend: {},
     fontFamily: {
       "Titan-One": ["Titan One", "sans"],
+      "Rubik": ["Rubik"],
       sans: ["sans-serif", "serif"],
+      
     },
     screens: {
       sm: '480px',

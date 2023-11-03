@@ -1,7 +1,7 @@
-import thegameisland from "../content/images/thegameisland.png";
+import thegameisland from "../content/images/thegameisland2.png";
 import "../index.css";
 import React, { useState, useEffect } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import $ from "jquery";
 import NavBarMenuDisplay from "./NavBarMenuDisplay.js";
@@ -24,26 +24,22 @@ function NavBar() {
   let location = window.location.pathname;
   
   if(location.split("/").includes("account")) $("#menu-container").show();
+  if(location.split("/").includes("cart")) $("#menu-container").show();
+  if(location.split("/").includes("cart") && clicked !== "cart") setClicked("cart");
 
   if(location === "/" || prohibitedUrl.includes(location)) location = "";
 
   const variables = {
     input: token
 }
-  const { error, loading, data } = useQuery(LOAD_CUSTOMER,{
+  const { error, loading, data, refetch} = useQuery(LOAD_CUSTOMER,{
     variables: variables,
-    skip: !loggedIn
   });
 
-  useEffect(() => {
-
-    if(localStorage.getItem('thegameislandCustyInfo')) return;
-
+  useEffect(() => {    
     if(data) {
     const customerInfo = data.loginUser
-    console.log(data)
     localStorage.setItem('thegameislandCustyInfo', JSON.stringify({firstName: customerInfo.firstName , lastName: customerInfo.lastName, email: customerInfo.email,address: customerInfo.address, id: customerInfo.id, orders: customerInfo.orders}))
-      
     }
     
   },[data])
@@ -52,7 +48,7 @@ function NavBar() {
     if (token && loggedIn === false) {
       setLoggedIn(true)
   }
-  },[])
+    },[])
 
   function shortenUrl() {
     return location.split("/").filter((i) => prohibitedUrl.includes(`/${i}`) || i == "/" || i == "" ? "": `/${i}`).map((i) => `/${i}`).join()
@@ -76,11 +72,11 @@ function NavBar() {
     <>
       <div className="z-[48] h-[155px] w-full top-0 left-0">
         <div className="flex items-center justify-between w-full h-full">
-          <img src={thegameisland} className="h-full w-[20%] mt-2 ml-4 hover:scale-[1.05] cursor-pointer" onClick={() => {navigate("/");  setClicked(null);}}/>
-          <div className="flex w-[35%] mr-4 text-4xl text-white font-Titan-One">
+          <img src={thegameisland} className="h-full w-[20%] mt-2 ml-4 hover:scale-[.9] scale-[.8] cursor-pointer" onClick={() => {navigate("/");  setClicked(null);}}/>
+          <div className="flex w-[35%] mr-4 text-4xl text-white font-Rubik">
             <div className="flex w-full">
               <input
-                className="w-full pl-2 mx-2 font-sans bg-transparent border-b-2 border-[#51A451]"
+                className="w-full pl-2 mx-2 font-sans bg-transparent border-b-2 border-[#51A451] "
                 placeholder="Search our inventory!"
                 onChange={(e) => handleSearchInput(e)}
                 value={query}
@@ -147,10 +143,13 @@ function NavBar() {
             >
               <FontAwesomeIcon icon={faCartShopping} />
             </div>
+            {/* <div className="text-sm" onClick={() => {refetch(); console.log("refetch ran")}}>
+              refetch
+            </div> */}
           </div>
         </div>
       </div>
-      <NavBarMenuDisplay setLoggedIn={setLoggedIn}/>
+      <NavBarMenuDisplay setLoggedIn={setLoggedIn} refetch={refetch}/>
     </>
   );
 }
