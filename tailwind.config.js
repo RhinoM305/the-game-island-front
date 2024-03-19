@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: theme => ({
+        'retro-banner-newsletter': "url('./content/images/retro-newsletter-bg.png')"
+       })
+    },
     fontFamily: {
       "Titan-One": ["Titan One", "sans"],
       "Rubik": ["Rubik"],

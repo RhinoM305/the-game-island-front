@@ -5,6 +5,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { LOAD_COLLECTIONBYHANDLE } from "../../graphQL/Queries";
 
+//animations
+import {fastLoadingAnimation1} from "../../content/animations/fastLoadingAnimation"
+
 function ProductList({setProduct}) {
     let [numberPerPage, setNumberPerPage] = useState(15);
     let [pageInfo, setPageInfo] = useState({before: null, after: null, first: numberPerPage, last: null, sortKey:null, reverse: false});
@@ -74,16 +77,18 @@ function ProductList({setProduct}) {
 
     function renderProducts(products) {
         products = products.getCollectionByHandle.products;
+
+        if(products.length === 0) return (<p className="text-white w-full text-center mt-[50px] text-[20px]">No results found.  :(</p>) 
  
         return products.map(product => {
             return (
-                <li className="w-1/5 p-2 h-[350px] hover:scale-[1.02] hover:opacity-[.8]" onClick={() => {navigate(`/productView/${handle}/${product.productId}`); setProduct(product)}}>
-                <div className="w-full h-full overflow-hidden rounded-lg">
+                <li className="w-1/5 p-2 h-[350px] min-[1080px]:hover:scale-[1.02] hover:opacity-[.8] max-[400px]:w-full max-[600px]:w-1/2 max-[800px]:w-1/3 max-[1080px]:w-1/4" onClick={() => {navigate(`/productView/${handle}/${product.productId}`); setProduct(product)}}>
+                <div className="w-full h-full overflow-hidden text-white bg-[#1E1E1E]">
                     <img src={product.images[0]} className="bg-white h-[60%] w-full px-4"/>
-                    <div className="h-[32%] bg-orange-500 text-center p-1">
+                    <div className="h-[25%] text-center p-1">
                         {product.title}
                     </div>
-                    <div className="h-[8%] pr-2 text-right bg-stone-500">{product.price}</div>
+                    <div className="h-[8%] text-center font-bold">{product.price}</div>
                 </div>
             </li>
             )
@@ -91,32 +96,37 @@ function ProductList({setProduct}) {
     };
 
     return (
-        <div className="w-full">
-            <div className="w-full p-4">
-                <div className="flex justify-between mt-4">
+        <div className="w-full max-[1080px]:text-sm">
+            <div className="w-full p-4 max-[1080px]:p-0">
+                <div className="flex justify-between mt-4 max-[1080px]:items-center max-[1080px]:flex-col max-[1080px]:mt-2">
                 <p className="text-white">OPTIONS</p>
-                <div className="flex">
-                  {data && <p className="mr-8 text-white">You are on page: {currPage} of {Math.ceil(data.getCollectionByHandle.productsCount/numberPerPage)}</p>}
+                <div className="flex max-[1080px]:flex-col-reverse max-[1080px]:text-center">
+                    <div className="flex">
+                    {data && <p className="mr-8 text-white">You are on page: {currPage} of {Math.ceil(data.getCollectionByHandle.productsCount/numberPerPage)}</p>}
                   {data && <p className="text-white hover:scale-[1.07] mx-1" onClick={() => handleLeftClick(data.getCollectionByHandle.pageInfo)}>Previous</p>}
                   {data && <p className="text-white hover:scale-[1.07] mx-1" onClick={() => handleRightClick(data.getCollectionByHandle.pageInfo)}>Next</p>}
-                  <select className="mx-2" value={null} onChange={e => handleSortSelect(e)}>
+                    </div>
+                   <div>
+                   <select className="mx-2 max-[1080px]:mx-0" value={null} onChange={e => handleSortSelect(e)}>
                     <option hidden selected>Select</option>
                     <option value="1">Sort by price (Low to High)</option>
                     <option value="2">Sort by price (High to low)</option>
                     <option value="3">Sort by title (A - Z)</option>
                     <option value="4">Sort by title (Z - A)</option>
                   </select>
-                  <select className="mx-2" value={null} onChange={e => handleNumPerPageSelect(e)}>
+                  <select className="mx-2 max-[1080px]:mx-0" value={null} onChange={e => handleNumPerPageSelect(e)}>
                     <option hidden selected>Select</option>
                     <option value="1">15</option>
                     <option value="2">25</option>
                     <option value="3">40</option>
                   </select>
+                   </div>
                 </div>
                 </div>
-                <ul className="flex flex-wrap w-full px-1/4">
-                    {data && renderProducts(data)}
-                </ul>
+                {data && <ul className="flex flex-wrap w-full px-1/4">
+                    {renderProducts(data)}
+                </ul>}
+                {loading && <div className="h-max w-full flex justify-center items-center mt-[200px]">{fastLoadingAnimation1()}</div>}
             </div>
            
         </div>

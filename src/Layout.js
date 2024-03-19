@@ -5,6 +5,7 @@ import Landing from "./Landing.js"
 import Search from "./productMenu/Search/Search.js"
 import LoginForm from "./login/LoginForm.js"
 import { Routes, Route } from "react-router-dom";
+import $ from "jquery";
 
 
 import { useQuery } from "@apollo/client";
@@ -24,8 +25,9 @@ function Layout() {
     window.localStorage.setItem('productDetail', JSON.stringify(productDetail))
 },[productDetail])
     
+
   return (
-    <>
+    <body className="">
     <div className="fixed w-screen h-screen -z-[1] bg-[#000000]"></div>
 
       <Suspense fallback={<>Loading..</>}>
@@ -36,7 +38,7 @@ function Layout() {
           <Route path="/*" element={<Landing setProductDetail={setProductDetail} productDetail={productDetail} setProduct={setProduct}/>}/>
         </Routes>
       </Suspense>
-    </>
+    </body>
   )
 }
 <img src="https://cdn.shopify.com/s/files/1/0749/6872/7836/files/Background_3.jpg?v=1692555532" className="fixed z-[1] w-screen h-screen"></img>

@@ -3,6 +3,54 @@ import React, { useState, useEffect } from "react";
 import { UPDATE_CUSTOMER_ADDRESS,CREATE_CUSTOMER_ADDRESS } from "../graphQL/Mutations";
 import { useMutation } from "@apollo/client";
 
+function Orders() {
+  let  {orders} = JSON.parse(localStorage.getItem('thegameislandCustyInfo'));
+
+  let organizedOrders = orders.map((order) => {
+    const {billingAddress,currentSubtotalPrice,currentTotalPrice,currentTotalTax,edited,financialStatus,fulfillmentStatus,lineItems,name,orderNumber,processedAt,totalShippingPrice} = order;
+
+    const dateFormat = (date) => {
+      date = new Date(date)
+      const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(date.getUTCDate()).padStart(2, '0');
+      const year = date.getUTCFullYear();
+
+      return (`${month}/${day}/${year}`)
+    }
+    return (
+      <>
+      <tr className="text-white">
+        <td>{name}</td>
+        <td>{dateFormat(processedAt)}</td>
+        <td>{financialStatus}</td>
+        <td className="max-[1080px]:hidden">{fulfillmentStatus}</td>
+        <td className="max-[1080px]:hidden">{lineItems.length}</td>
+        <td>{currentTotalPrice}</td>
+      </tr>
+      </>
+      
+    )
+  })
+  return <div className="w-full text-white">
+    <table className="w-full h-full text-center table-auto max-[1080px]:w-[155%]">
+      <thead className="w-full border-b-2 border-white">
+        <tr className="">
+          <th>Order</th>
+          <th>Date</th>
+          <th>Payment</th>
+          <th className="max-[1080px]:hidden">Fulfillment</th>
+          <th className="max-[1080px]:hidden">Item amt.</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody className="">
+      {organizedOrders}
+      </tbody>
+    </table>
+    {orders.length == 0 && <div className="text-black bg-lime-300 mt-2 py-3 border-l-[10px] border-lime-700 pl-2 text-2xl rounded-md max-[1080px]:text-sm max-[1080px]:w-[155%]">You have not placed a order yet :(</div>}
+
+  </div>;
+}
 
 export function Overview() {
   let custyInfo = JSON.parse(localStorage.getItem('thegameislandCustyInfo'))
@@ -74,116 +122,85 @@ export function Overview() {
     
   }
 
-  // if(data) {
-  //   console.log(data)
-  // }
+  let staticAddress = 
+  <div className="text-stone-400">
+    <div className="flex justify-center text-lg text-white">
+      <p className="mx-1">{addressForm.firstName}</p>
+      <p className="mx-1">{addressForm.lastName}</p>
+    </div>
+    <div className="flex justify-center text-xs">
+      <p className="mx-1">{addressForm.address1},</p>
+      <p className="">{addressForm.city},</p>
+      <p className="">{addressForm.province},</p>
+    </div>
+    <div className="flex justify-center text-xs">
+    <p>{addressForm.country}</p>
+    </div>
+    <div className="flex justify-center text-xs">
+      <p>{addressForm.phone}</p>
+    </div>
+  </div>
+  let addressInputsForm = <div className="flex flex-col justify-center mx-6 overflow-hidden max-[1080px]:overflow-y-scroll max-[1080px]:mx-0 max-[1080px]:pt-[50px] max-[1080px]:pb-[5px]">
+  <div className="flex justify-between max-[1080px]:justify-normal">
+      <div>
+          <p className="text-sm">First name:</p>
+          <input className="max-[1460px]:w-[90%] pl-1 text-black addyInput" placeholder="first name" value={addressForm.firstName} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, firstName:e.target.value})} required/>
+      </div>
+      <div className="">
+          <p className="text-sm">Last name:</p>
+          <input className="max-[1460px]:w-[90%] pl-1 text-black addyInput" placeholder="last name" value={addressForm.lastName} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, lastName:e.target.value})} required/>
+      </div>
+  </div>
+  <div className="">
+    <div>
+        <p className="w-full text-sm">Address 1:</p>
+        <input className="w-full pl-1 text-black addyInput max-[1460px]:w-[365px]" placeholder="address1" value={addressForm.address1} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, address1: e.target.value})} required/>
+    </div>
+    <div>
+        <p className="w-full text-sm">Address 2:</p>
+        <input className="w-full pl-1 text-black addyInput max-[1460px]:w-[365px]" placeholder="address2" value={addressForm.address2 === null ? '' : ""} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, address2: e.target.value})}/>
+    </div>
+  </div>
+  <div className="flex justify-between max-[1080px]:justify-normal">
+      <div>
+          <p className="text-sm">City:</p>
+          <input className="max-[1460px]:w-[90%] pl-1 text-black addyInput" placeholder="city" value={addressForm.city} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, city:e.target.value})} required/>
+      </div>
+      <div>
+          <p className="text-sm">Country:</p>
+          <input className="max-[1460px]:w-[90%] pl-1 text-black addyInput" placeholder="country" value={addressForm.country} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, country:e.target.value})} required/>
+      </div>
+      </div>
+  <div className="flex justify-between max-[1080px]:justify-normal">
+      <div>
+          <p className="text-sm">State:</p>
+          <input className="max-[1460px]:w-[90%] pl-1 text-black addyInput" placeholder="province" value={addressForm.province} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, province:e.target.value})} required/>
+      </div>
+      <div>
+          <p className="text-sm">Zipcode:</p>
+          <input className="max-[1460px]:w-[90%] pl-1 text-black addyInput" placeholder="zipcode" value={addressForm.zipcode} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, zipcode:e.target.value})} required/>
+      </div>
+  </div>
+    <p className="ml-2 text-sm max-[1080px]:ml-0">Phone:</p>
+    <input className="pl-1 text-black addyInput max-[1460px]:w-[165px]" placeholder="phone" value={addressForm.phone} maxLength={11} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, phone:e.target.value})} required/>
+  </div>
 
-  // if(error) {
-  //   console.log(error)
-  // }
-
-
-
-  // if(address1 === null)
-  return <form className="flex flex-col text-white w-max overflow-hidden" onSubmit={(e) => handleSubmit(e)}>
-    <h2 className="text-xl font-bold">Account Details</h2>
+  return (
+    <div className="w-full h-[90%] flex max-[1080px]:flex-col">
+      <div className="w-[65%] px-6 max-[1080px]:px-0">{Orders()}</div>
+      <form className="flex flex-col text-white overflow-hidden w-[35%] max-[1080px]:w-full max-[1080px]:items-center" onSubmit={(e) => handleSubmit(e)}>
+    <h2 className="text-[25px] font-bold max-[1080px]:text-[20px]">Account Details:</h2>
     <p className="ml-2 text-sm">First name: {firstName}</p>
     <p className="ml-2 text-sm">Last name: {lastName}</p>
     <p className="ml-2 text-sm">Email: {email}</p>
-    <h2 className="text-xl font-bold">Shipping Address</h2>
-    <div>
-    <div className="flex">
-        <div>
-            <p className="ml-2 text-sm">First name:</p>
-            <input className="pl-1 ml-2 text-black addyInput" placeholder="first name" value={addressForm.firstName} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, firstName:e.target.value})} required/>
-        </div>
-        <div>
-            <p className="ml-2 text-sm">Last name:</p>
-            <input className="pl-1 ml-2 text-black addyInput" placeholder="last name" value={addressForm.lastName} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, lastName:e.target.value})} required/>
-        </div>
+    <h2 className="text-[25px] font-bold max-[1080px]:text-[20px]">Shipping Address:</h2>
+    {disabled ? staticAddress : addressInputsForm}
+    <div className="flex flex-col max-[1080px]:flex-row max-[1080px]:justify-center max-[1080px]:w-full">
+    <button className="addyInput bg-[#51A451] mx-10 my-1 max-[1080px]:mx-2 max-[1080px]:w-[2s5%]  max-[1080px]:mb-4 max-[1080px]:mt-3 max-[1080px]:px-4" style={{opacity:disabled ? .50 :  1}} type="submit" disabled={disabled}>Save Address</button>
+    <p className="text-center cursor-pointer bg-[#51A451] mx-10 my-1 max-[1080px]:mx-2 max-[1080px]:w-[2s5%]  max-[1080px]:mb-4 max-[1080px]:mt-3 max-[1080px]:px-4" onClick={()=>{setDisabled(false)}}>Edit Address</p>
     </div>
-    <div className="">
-      <div>
-          <p className="ml-2 text-sm">Address 1:</p>
-          <input className="pl-1 ml-2 text-black addyInput w-full" placeholder="address1" value={addressForm.address1} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, address1: e.target.value})} required/>
-      </div>
-      <div>
-          <p className="ml-2 text-sm">Address 2:</p>
-          <input className="pl-1 ml-2 text-black addyInput w-full" placeholder="address2" value={addressForm.address2 === null ? '' : ""} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, address2: e.target.value})}/>
-      </div>
-    </div>
-    <div className="flex">
-        <div>
-            <p className="ml-2 text-sm">City:</p>
-            <input className="pl-1 ml-2 text-black addyInput" placeholder="city" value={addressForm.city} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, city:e.target.value})} required/>
-        </div>
-        <div>
-            <p className="ml-2 text-sm">Country:</p>
-            <input className="pl-1 ml-2 text-black addyInput" placeholder="country" value={addressForm.country} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, country:e.target.value})} required/>
-        </div>
-        </div>
-    <div className="flex">
-        <div>
-            <p className="ml-2 text-sm">State:</p>
-            <input className="pl-1 ml-2 text-black addyInput" placeholder="province" value={addressForm.province} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, province:e.target.value})} required/>
-        </div>
-        <div>
-            <p className="ml-2 text-sm">Zipcode:</p>
-            <input className="pl-1 ml-2 text-black addyInput" placeholder="zipcode" value={addressForm.zipcode} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, zipcode:e.target.value})} required/>
-        </div>
-    </div>
-      <p className="ml-2 text-sm">Phone:</p>
-      <input className="pl-1 ml-2 text-black addyInput" placeholder="phone" value={addressForm.phone} type="number" maxLength={11} disabled={disabled} onChange={(e)=>setAddressForm({...addressForm, phone:e.target.value})} required/>
-    </div>
-    <button className="mt-2 ml-2 addyInput bg-[#51A451]" style={{opacity:disabled ? .50 :  1}} type="submit" disabled={disabled}>Save Address</button>
-    <p className="my-1 ml-2 text-center cursor-pointer bg-[#51A451]" onClick={()=>{setDisabled(false)}}>Edit Address</p>
 
-  </form>;
+  </form>
+    </div>
+  )
 }
-
-export function Orders() {
-  let  {orders} = JSON.parse(localStorage.getItem('thegameislandCustyInfo'));
-
-  let organizedOrders = orders.map((order) => {
-    const {billingAddress,currentSubtotalPrice,currentTotalPrice,currentTotalTax,edited,financialStatus,fulfillmentStatus,lineItems,name,orderNumber,processedAt,totalShippingPrice} = order;
-
-    const dateFormat = (date) => {
-      date = new Date(date)
-      const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-      const day = String(date.getUTCDate()).padStart(2, '0');
-      const year = date.getUTCFullYear();
-
-      return (`${month}/${day}/${year}`)
-    }
-    return (
-      <tr className="text-white">
-        <td>{name}</td>
-        <td>{dateFormat(processedAt)}</td>
-        <td>{financialStatus}</td>
-        <td>{fulfillmentStatus}</td>
-        <td>{lineItems.length}</td>
-        <td>{currentTotalPrice}</td>
-      </tr>
-    )
-  })
-  return <div className="w-full text-white">
-    <table className="w-full h-full text-center table-auto">
-      <thead className="w-full border-b-2 border-white">
-        <tr>
-          <th>Order</th>
-          <th>Date</th>
-          <th>Payment Status</th>
-          <th>Fulfillment Status</th>
-          <th>Item amt.</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody className="">
-      {organizedOrders}
-      </tbody>
-    </table>
-    {orders.length == 0 && <div className="text-black bg-lime-300 mt-2 py-3 border-l-[10px] border-lime-700 pl-2 text-2xl rounded-md">You have not placed a order yet :(</div>}
-
-  </div>;
-}
-

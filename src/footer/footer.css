@@ -1,0 +1,34 @@
+li a {text-decoration : none; color : #2d2f31;}
+
+
+nav {
+  width : 100%; 
+  background: #d9d9d9;
+}
+
+span {
+  padding : 10px;
+  background : #2d2f31; 
+  color : white;
+  font-size : 15px;
+  font-variant : small-caps;
+  cursor : pointer;
+  display: block;
+}
+
+span::after {
+  float: right;
+  right: 10%;
+  content: "+";
+}
+
+.slide {
+  transition: height .4s ease;
+}
+
+.slide li {
+    padding : 10px;
+    font-size : 15px;
+ }
+
+#touch:checked + .slide {height: 170px;} 

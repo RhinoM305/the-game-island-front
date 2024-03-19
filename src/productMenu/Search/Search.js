@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { LOAD_PRODUCTS } from "../../graphQL/Queries";
 import NavBar from "../../nav/NavBar";
 import ProductNav from "../../nav/ProductNav";
-
+import ProductNavMobile from "../../nav/ProductNavMobile";
 
 function Search ({productDetail, setProductDetail, setProduct }) {
     //grabbing query from url
@@ -88,10 +88,10 @@ function Search ({productDetail, setProductDetail, setProduct }) {
 
         return products.map(product => {
             return (
-                <li className="w-1/5 p-2 h-[350px] hover:scale-[1.02] hover:opacity-[.8]" onClick={() => {navigate(`/productView/handle/${product.id}`); setProduct(product)}}>
-                <div className="w-full h-full overflow-hidden rounded-lg">
+                <li className="w-1/5 p-2 h-[350px] hover:scale-[1.02] min-[1080px]:hover:scale-[1.02] hover:opacity-[.8] max-[400px]:w-full max-[600px]:w-1/2 max-[800px]:w-1/3 max-[1080px]:w-1/4" onClick={() => {navigate(`/productView/handle/${product.id}`); setProduct(product)}}>
+                <div className="w-full h-full overflow-hidden">
                     <img src={product.images[0]} className="bg-white h-[60%] w-full"/>
-                    <div className="h-[32%] bg-orange-500 text-center p-1">
+                    <div className="h-[32%] bg-stone-500 text-center p-1">
                         {product.title}
                     </div>
                     <div className="h-[8%] pr-2 text-right bg-stone-500">{product.price}</div>
@@ -115,26 +115,30 @@ function Search ({productDetail, setProductDetail, setProduct }) {
             )
         } else {
             return (
-                <div className="w-full">
-                <div className="w-full p-4">
-                    <div className="flex justify-between mt-4">
+                <div className="w-full max-[1080px]:text-sm max-[1080px]:pt-12">
+                <div className="w-full p-4 max-[1080px]:p-0">
+                    <div className="flex justify-between mt-4 max-[1080px]:items-center max-[1080px]:flex-col max-[1080px]:mt-2">
                     <p className="text-white">OPTIONS</p>
-                    <div className="flex">
-                      {data && <p className="text-white hover:scale-[1.07] mx-1" onClick={() => handleLeftClick(data.getProducts.pageInfo)}>Previous</p>}
+                    <div className="flex max-[1080px]:flex-col-reverse max-[1080px]:text-center">
+                    <div className="flex max-[1080px]:justify-center">
+                    {data && <p className="text-white hover:scale-[1.07] mx-1" onClick={() => handleLeftClick(data.getProducts.pageInfo)}>Previous</p>}
                       {data && <p className="text-white hover:scale-[1.07] mx-1" onClick={() => handleRightClick(data.getProducts.pageInfo)}>Next</p>}
-                      <select className="mx-2" value={null} onChange={e => handleSortSelect(e)}>
+                    </div>
+                    <div>
+                    <select className="mx-2 max-[1080px]:mx-0" value={null} onChange={e => handleSortSelect(e)}>
                         <option hidden selected>Select</option>
                         <option value="1">Sort by price (Low to High)</option>
                         <option value="2">Sort by price (High to low)</option>
                         <option value="3">Sort by title (A - Z)</option>
                         <option value="4">Sort by title (Z - A)</option>
                       </select>
-                      <select className="mx-2" value={null} onChange={e => handleNumPerPageSelect(e)}>
+                      <select className="mx-2 max-[1080px]:mx-0" value={null} onChange={e => handleNumPerPageSelect(e)}>
                         <option hidden selected>Select</option>
                         <option value="1">15</option>
                         <option value="2">25</option>
                         <option value="3">40</option>
                       </select>
+                    </div>
                     </div>
                     </div>
                     <ul className="flex flex-wrap w-full px-1/4">
@@ -148,10 +152,11 @@ function Search ({productDetail, setProductDetail, setProduct }) {
     }
     return (
         <>
-        <div className="w-full bg-black">
-            <NavBar />
-            <div className="w-3/4 mx-[12.5%] flex items-center flex-col">
+        <div className="w-full bg-black max-[500px]:mt-[55px] min-[500px]:mt-[70px] min-[800px]:mt-[75px] min-[1000px]:mt-[85px] min-[1200px]:mt-[95px] min-[1400px]:mt-[105px] min-[1600px]:mt-[115px] min-[1800px]:mt-[125px] min-[1080px]:mt-[155px]">
+            <NavBar setProductDetail={setProductDetail}/>
+            <div className="w-3/4 mx-[12.5%] flex items-center flex-col max-[1080px]:mx-0 max-[1080px]:pt-6 max-[1080px]:w-full">
             <ProductNav setProductDetail={setProductDetail}/>
+            <ProductNavMobile setProductDetaail={setProductDetail}/>
             {data && loadProducts()}
             </div>
         </div>

@@ -7,7 +7,7 @@ const NES2 = ({color, opacity}) => (
     id="Layer_1"
     x={0}
     y={0}
-    className="w-[120px] h-full scale-[2.75] max-3xl:w-[110px]  max-3xl:scale-[1.8]"
+    className="w-[120px] h-full scale-[2.75] max-3xl:w-[110px] max-3xl:scale-[1.8]"
     opacity={opacity ? opacity : "1"}
     style={{
       enableBackground: "new 0 0 512 512",
@@ -205,7 +205,7 @@ const SNES2 = ({color, opacity}) => (
   const NSWITCH2 = ({color, opacity}) => (
     <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="w-[120px] h-full scale-[1.2] max-3xl:w-[110px]"
+    className="w-[120px] h-full scale-[1.2] max-3xl:w-[110px] max-[796px]:scale-[1]"
     opacity={opacity ? opacity : "1"}
     viewBox="0 0 900 900"
   >

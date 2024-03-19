@@ -3,7 +3,7 @@ import SlideShow from "./SlideShow";
 import secondBanner from "../content/images/second-banner-fixed.png";
 import $ from "jquery";
 import ProductNav from "../nav/ProductNav";
-
+import ProductNavMobile from "../nav/ProductNavMobile"
 
 function Caorsuel({setProductDetail}) {
   const [displaySlides, setDisplaySlides] = useState(null);
@@ -47,6 +47,7 @@ function Caorsuel({setProductDetail}) {
             autoPlay
             loop
             muted
+            disablePictureInPicture
             onClick={() => {}}
           />
         ),
@@ -103,8 +104,9 @@ function Caorsuel({setProductDetail}) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full">
+    <div className="flex flex-col items-center justify-center w-full h-full max-[1080px]:hidden">
       <ProductNav setProductDetail={setProductDetail}/>
+      <ProductNavMobile setProductDetaail={setProductDetail}/>
       <div className="w-full h-[470px] bg-red-500" id="swrapper">
 <div style={{width: `${dim.width}px`, height: `${dim.height}px`}} className="absolute z-[2] flex items-center justify-between">
       <CustomPrevArrow />

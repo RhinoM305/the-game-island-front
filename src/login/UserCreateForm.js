@@ -79,8 +79,8 @@ function UserCreateForm() {
       }
 
     return (
-        <div className="w-full h-[80%] flex justify-center items-center flex-col">
-            <form className="p-4 px-12 text-lg text-white border-2 border-[#51A451]" onSubmit={(e) => handleSubmit(e)}>
+        <div className="w-full h-[80%] flex justify-center items-center flex-col max-[1080px]:pt-[80px]">
+            <form className="p-4 px-12 text-lg text-white border-2 border-[#51A451] max-[1080px]:border-0" onSubmit={(e) => handleSubmit(e)}>
                 <h3 className="my-2 text-xl font-bold border-b-2 border-[#51A451] w-max">CREATE ACCOUNT</h3>
                 <p>First Name</p>
                 <input className="w-full pl-1 text-black" type="text" name="firstName" minLength={1} required={true} value={createForm.firstName} placeholder="first name" onChange={(e)=>setCreateForm({...createForm,firstName:e.target.value})} onKeyDown={e => handleKeyPress(e)}/>
