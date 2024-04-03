@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./App";
 
 const client = new ApolloClient({
-  uri: `http://localhost:3001/graphql`,
+  uri: `https://the-game-island-front-proto.onrender.com`,
   cache: new InMemoryCache(),
 });
 
