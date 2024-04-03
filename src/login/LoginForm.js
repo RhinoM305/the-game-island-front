@@ -33,7 +33,6 @@ function LoginFrom() {
         const token = tokenContent.data.getCustomerToken.loggedUser.accessToken;
         
         localStorage.setItem('thegameislandToken', token);
-        console.log(localStorage.getItem('thegameislandCart'))
         if(localStorage.getItem('thegameislandCart') === null) localStorage.setItem('thegameislandCart', JSON.stringify([])); 
         localStorage.setItem('thegameislandHasLoggedIn', true);
           navigate("/")

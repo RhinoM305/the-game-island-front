@@ -19,7 +19,6 @@ function MobileConsoleBrands({setFeat1,feat1,setSpot,setBrandCount,brandCount}) 
         {num:5,name:"featured-atari-console",setFeat:setFeat1,setFeatStateVal:feat1,featNum:1,productName:"Atari",setBrandCount:setBrandCount}
     ]
     useEffect(() => {
-        console.log("useEffect Ran")
 
         let {num,name,setFeat,setFeatStateVal,featNum,productName,setBrandCount} = brandAttributes[brandCount]
         setSpot(num,name,setFeat,setFeatStateVal,featNum,productName,setBrandCount);
@@ -173,7 +172,7 @@ function MobileXboxBrands({setFeat4,feat4,setSpot,setBrandCount,brandCount}) {
         <div className="flex w-full overflow-hidden rounded-t min-[1189px]:hidden">
             <button className="bg-black w-[15%]" onClick={() => handleLeftClick()}><FontAwesomeIcon icon={faChevronLeft} className="text-white" /></button>
             <div className="w-[70%] flex justify-center">{brandArr[brandCount]}</div>
-            <button className="bg-black w-[15%]" onClick={() => handleRightClick()}i><FontAwesomeIcon icon={faChevronRight} className="text-white" /></button>
+            <button className="bg-black w-[15%]" onClick={() => handleRightClick()}><FontAwesomeIcon icon={faChevronRight} className="text-white" /></button>
         </div>
     )
 }

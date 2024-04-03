@@ -111,7 +111,6 @@ export function Cart({setLoggedIn,refetch}) {
  }
 
  async function handleCheckout() {
-  console.log("...checking out")
   let response = await createCart().catch((err) => console.log("error happended:",err));
   let checkoutUrl = response.data.createCustomerCart.checkoutUrl;
 

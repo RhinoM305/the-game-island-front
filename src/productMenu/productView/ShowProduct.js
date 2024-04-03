@@ -36,7 +36,6 @@ function ShowProduct() {
     
     useEffect(() => {
         if(data) {
-            console.log("data loaded:",data)
             setProduct(data.getProduct)
             setCurrImg(data.getProduct.images[0])
 

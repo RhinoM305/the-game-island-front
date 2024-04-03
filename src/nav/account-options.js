@@ -93,7 +93,6 @@ export function Overview() {
 
     if(address1 === undefined || address1 === null) {
       const createAddressResponse = await createAddress().catch((err) => console.log("error happended:",err));
-      console.log(createAddressResponse)
       let updatedAddress = createAddressResponse.data.createCustomerAddress.customerAddress
 
     //re defining

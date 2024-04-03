@@ -8,6 +8,7 @@ function SlideShow({ slides, setting, refslide, elementHeight }) {
     <Slider ref={refslide} {...setting}>
       {slides.map((slide) => (
         <button
+          key={"slide Img"}
           className={`${slide.classes} h-[${elementHeight}px] w-full z-[2]`}
           onClick={() => {
             window.open("about:blank");

@@ -23,7 +23,7 @@ function ProductDisplay({setProductDetail,setProduct}) {
   const [feat1, setFeat1] = useState({index:1, colName:"featured-nintendo-console", name: "Nintendo", type: "Systems"});
   const [feat2, setFeat2] = useState({index:1, colName:"featured-nintendo-nes-games", name: "Nintendo Entertainment System", type: "Games"});
   const [feat3, setFeat3] = useState({index:1, colName:"featured-playstation1-games", name: "Playstation", type: "Games"});
-  const [feat4, setFeat4] = useState({index:1, colName:"featured-xbox-games", name: "Xbox", type: null});
+  const [feat4, setFeat4] = useState({index:1, colName:"featured-xbox-games", name: "Xbox", type: "Games"});
   let [viewSetting,setViewSetting] = useState(null);
 
   //for mobile use 
@@ -57,7 +57,7 @@ function ProductDisplay({setProductDetail,setProduct}) {
   return (
     <>
         <div className="w-full text-center">
-     <h2 className="text-2xl text-white mt-14 text-bold">Featured Consoles</h2>
+     <h2 className="mt-24 text-2xl text-white text-bold">Featured Consoles</h2>
      {/*1st featured list*/}
      <div className="h-[350px] bg-stone-800 m-4 p-[15px] rounded-xl relative max-[796px]:m-0">
 

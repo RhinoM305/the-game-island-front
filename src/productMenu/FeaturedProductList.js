@@ -30,20 +30,16 @@ function FeaturedProductList ({feat,setFeat, setProduct}) {
     $(window).resize(function() {
         viewportWidth = $(window).width();
         if(viewportWidth < 530 && viewSetting !== 1) {
-            console.log("setting view to 1")
             setViewSetting(1);
             return;
         } else if (viewportWidth < 700 && viewportWidth > 530 && viewSetting !== 2) {
-            console.log("setting view to 2")
             setViewSetting(2);
             return;
         } else if (viewportWidth < 1080 && viewportWidth > 700 && viewSetting !== 3) {
-            console.log("setting view to 3")
             setViewSetting(3);
             return;
         }
          else if (viewportWidth < 1189 && viewportWidth > 1080 && viewSetting !== 4) {
-            console.log("setting view to 4")
             setViewSetting(4);
             return;
         } else {
@@ -53,7 +49,6 @@ function FeaturedProductList ({feat,setFeat, setProduct}) {
     });
     
     const handleRightClick = (pageInf,productLength) => {
-        console.log(count)
         if(viewportWidth < 530 && count !== productLength - 1) {
             setCount(count + 1)
             return;
@@ -68,7 +63,6 @@ function FeaturedProductList ({feat,setFeat, setProduct}) {
             return;
            }
         } else if (viewportWidth < 1080) {
-            console.log(pageInf.hasNextPage);
             if(count !== Math.ceil(productLength / 3) - 1) {
                 setCount(count + 1)
                 return;
@@ -88,7 +82,6 @@ function FeaturedProductList ({feat,setFeat, setProduct}) {
     }
 
     const handleLeftClick = (pageInf,productLength) => {
-        console.log(count)
         if(viewportWidth < 530 && count !== 0) {
             setCount(count - 1)
             return;
@@ -153,7 +146,7 @@ function FeaturedProductList ({feat,setFeat, setProduct}) {
         }
         return products.map(product => {    
             return (
-                <div className="z-[2] w-1/6 h-full border-2 hover:scale-[1.02] hover:opacity-[.8] rounded-lg overflow-hidden max-[530px]:w-[80%] max-[1080px]:w-[40%]" onClick={() => {navigate(`/productView/${feat.colName}/${product.productId}`); setProduct(product)}}>
+                <div key={product.title} className="z-[2] w-1/6 h-full border-2 hover:scale-[1.02] hover:opacity-[.8] rounded-lg overflow-hidden max-[530px]:w-[80%] max-[1080px]:w-[40%]" onClick={() => {navigate(`/productView/${feat.colName}/${product.productId}`); setProduct(product)}}>
                 <img src={product.images[0]} className="w-full h-[60%] px-4"/>
                 <div className="w-full h-[40%] bg-orange-500 font-Rubik font-bold">
                     <div className="w-full h-[85%] p-1">{product.title}</div>

@@ -105,10 +105,10 @@ function Footer() {
         </div>
       </div>
       <hr className="mx-8 my-4" />
-      <p className="flex justify-center w-full text-[11px] text-white">
+      <div className="flex justify-center w-full text-[11px] text-white">
         @ 2023 The Game Island. Made with {"<3"} by{" "}
         <p className="text-[#51A451] ml-[4px]">Ryan Moreno</p>
-      </p>
+      </div>
       <div className="w-full h-[35px] flex justify-center items-center mt-6">
         <div className="bg-white w-[64px] mx-1 h-full p-[2px] rounded-lg border-2">
           <img
