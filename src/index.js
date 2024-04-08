@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./App";
 
 const client = new ApolloClient({
-  uri: `https://the-game-island-front-proto.onrender.com`,
+  uri: `https://retro-backend-apolllo.onrender.com`,
   cache: new InMemoryCache(),
 });
 
